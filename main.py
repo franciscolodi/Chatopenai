@@ -28,10 +28,14 @@ def ai_generate_message(reminders):
     Reformula y prioriza esta lista de recordatorios para hacerla más clara y motivante:
     {reminders}
     """
+
+    ###
+
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
+    model="gpt-3.5-turbo",
+    messages=[{"role": "user", "content": prompt}]
     )
+
     return response.choices[0].message.content
 
 # --- Enviar recordatorio ---
@@ -43,3 +47,4 @@ def send_reminder():
 
 if __name__ == "__main__":
     send_reminder()
+
