@@ -14,18 +14,16 @@ bot = Bot(token=TELEGRAM_TOKEN)
 
 # --- Lista de categorías de desafíos ---
 desafios = [
-    "CrossFit: haz un circuito de 20 minutos con burpees, sentadillas y push-ups",
+    "CrossFit: haz un circuito de 20 minutos",
     "Alimentación: prepara una comida saludable rica en proteínas y vegetales",
-    "Salud y bienestar: medita 10 minutos y bebe 2 litros de agua",
-    "CrossFit: realiza 50 saltos con cuerda y 30 lunges alternados",
-    "Alimentación: evita azúcares refinados hoy y come frutas naturales",
-    "Salud y bienestar: haz una caminata de 30 minutos al aire libre"
+    "de Salud y bienestar",
+
 ]
 
 # --- Función para generar desafío motivador ---
 def generar_desafio_motivador(desafio):
     prompt = (
-        f"Convierte el siguiente desafío diario en una frase motivadora, concisa y clara "
+        f"Convierte el siguiente desafío diario en una actividad concisa y clara "
         f"para alguien que quiere mejorar su salud, alimentación y entrenamiento: '{desafio}'. "
         "Escribe en español, con tono inspirador y enérgico."
     )
@@ -48,4 +46,5 @@ for desafio in desafios:
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {frase}")
     bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=frase)
     time.sleep(2)  # Pequeña pausa entre mensajes
+
 
