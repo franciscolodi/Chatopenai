@@ -3,6 +3,11 @@ from huggingface_hub import InferenceClient
 from datetime import datetime
 import time
 from telegram import Bot
+import os
+
+HF_TOKEN = os.getenv("HF_TOKEN")
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 client = InferenceClient(api_key=HF_TOKEN)
 bot = Bot(token=TELEGRAM_TOKEN)
@@ -43,3 +48,4 @@ for desafio in desafios:
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {frase}")
     bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=frase)
     time.sleep(2)  # Pequeña pausa entre mensajes
+
