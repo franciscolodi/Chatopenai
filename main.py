@@ -1,5 +1,5 @@
 import os
-import openai
+from openai import OpenAI
 from datetime import datetime
 from telegram import Bot
 from dotenv import load_dotenv
@@ -11,7 +11,7 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 bot = Bot(token=TELEGRAM_TOKEN)
-openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # --- Lista de recordatorios importantes ---
 reminders = [
@@ -28,11 +28,11 @@ def ai_generate_message(reminders):
     Reformula y prioriza esta lista de recordatorios para hacerla más clara y motivante:
     {reminders}
     """
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}]
     )
-    return response["choices"][0]["message"]["content"]
+    return response.choices[0].message.content
 
 # --- Enviar recordatorio ---
 def send_reminder():
