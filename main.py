@@ -8,9 +8,7 @@ from datetime import datetime
 import os
 import time
 import json
-import random
 import re
-
 
 # --- Configuración ---
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
@@ -39,8 +37,6 @@ def cargar_historial():
             return {}
     return {}
 
-
-
 def guardar_historial(fecha, desafios):
     historial = cargar_historial()
     historial[fecha] = desafios
@@ -55,17 +51,29 @@ def guardar_historial(fecha, desafios):
     with open(HIST_PATH, "w", encoding="utf-8") as f:
         json.dump(historial, f, ensure_ascii=False, indent=2)
 
-
 def obtener_desafios_recientes(dias=5):
     historial = cargar_historial()
     ultimos = [v for k, v in sorted(historial.items())[-dias:]]
-    # Flatten para extraer solo los textos de cada categoría
     recientes = {"CrossFit": set(), "Alimentación": set(), "Bienestar": set()}
     for dia in ultimos:
         for cat in recientes:
             if cat in dia:
-                recientes[cat].add(dia[cat])
+                recientes[cat].add(str(dia[cat]))
     return recientes
+
+# =========================================================
+# 🧠 UTILIDAD PARA EXTRAER JSON
+# =========================================================
+
+def extraer_json(texto):
+    """Intenta extraer un JSON aunque la IA agregue texto extra"""
+    try:
+        match = re.search(r'\{.*\}', texto, re.DOTALL)
+        if match:
+            return json.loads(match.group())
+    except json.JSONDecodeError:
+        return None
+    return None
 
 # =========================================================
 # 🧠 GENERADOR DE DESAFÍOS (IA)
@@ -80,6 +88,7 @@ def generar_desafios_diarios():
         "Devuelve solo un objeto JSON válido, sin texto adicional."
     )
 
+    contenido = ""
     try:
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
@@ -92,22 +101,22 @@ def generar_desafios_diarios():
         )
 
         contenido = response.choices[0].message.content.strip()
-
         desafios = extraer_json(contenido)
         if not desafios:
-            raise ValueError(f"No se detectó JSON válido en la respuesta: {contenido}")
+            raise ValueError("No se detectó JSON válido en la respuesta")
 
         # Evitar repetir desafíos recientes
         for cat in ["CrossFit", "Alimentación", "Bienestar"]:
-            if cat in desafios and desafios[cat] in recientes.get(cat, set()):
+            if cat in desafios and str(desafios[cat]) in recientes.get(cat, set()):
                 desafios[cat] = f"{desafios[cat]} (variante)"
 
         return desafios
 
     except Exception as e:
+        print("⚠️ Error generando desafíos")
+        print("Contenido devuelto por la IA:", contenido)
+        print("Detalle del error:", str(e))
         return {"Error": "Respuesta no es JSON válido", "Contenido": contenido, "Detalle": str(e)}
-
-
 
 # =========================================================
 # 🚀 ENVÍO DE DESAFÍOS A TELEGRAM
@@ -146,7 +155,3 @@ if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
-
-
-
-
