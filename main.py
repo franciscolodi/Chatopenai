@@ -29,7 +29,7 @@ def cargar_historial():
         try:
             with open(HIST_PATH, "r", encoding="utf-8") as f:
                 contenido = f.read().strip()
-                if not contenido:  # archivo vacío
+                if not contenido:
                     return {}
                 return json.loads(contenido)
         except json.JSONDecodeError:
@@ -38,15 +38,21 @@ def cargar_historial():
     return {}
 
 
+
 def guardar_historial(fecha, desafios):
     historial = cargar_historial()
     historial[fecha] = desafios
-    # Mantener solo últimos 30 días
     fechas = sorted(historial.keys())[-30:]
     historial = {k: historial[k] for k in fechas}
-    os.makedirs(os.path.dirname(HIST_PATH), exist_ok=True)
+
+    # Crear carpeta si existe
+    folder = os.path.dirname(HIST_PATH)
+    if folder:
+        os.makedirs(folder, exist_ok=True)
+
     with open(HIST_PATH, "w", encoding="utf-8") as f:
         json.dump(historial, f, ensure_ascii=False, indent=2)
+
 
 def obtener_desafios_recientes(dias=5):
     historial = cargar_historial()
@@ -137,4 +143,5 @@ if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
+
 
