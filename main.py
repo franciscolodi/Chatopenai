@@ -15,6 +15,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 HIST_PATH = "historial_desafios.json"
+MAX_REINTENTOS = 3
 
 # --- Inicializar clientes ---
 client = Groq(api_key=GROQ_API_KEY)
@@ -43,7 +44,6 @@ def guardar_historial(fecha, desafios):
     fechas = sorted(historial.keys())[-30:]
     historial = {k: historial[k] for k in fechas}
 
-    # Crear carpeta si existe
     folder = os.path.dirname(HIST_PATH)
     if folder:
         os.makedirs(folder, exist_ok=True)
@@ -66,7 +66,6 @@ def obtener_desafios_recientes(dias=5):
 # =========================================================
 
 def extraer_json(texto):
-    """Intenta extraer un JSON aunque la IA agregue texto extra"""
     try:
         match = re.search(r'\{.*\}', texto, re.DOTALL)
         if match:
@@ -79,6 +78,40 @@ def extraer_json(texto):
 # 🧠 GENERADOR DE DESAFÍOS (IA)
 # =========================================================
 
+def generar_desafio_por_categoria(prompt, recientes):
+    """Genera un objeto JSON válido de desafíos, reintentando si es necesario"""
+    for intento in range(1, MAX_REINTENTOS + 1):
+        try:
+            response = client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[
+                    {"role": "system", "content": "Eres un especialista en rendimiento humano, nutrición y fisiología. Devuelve JSON limpio."},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.4,
+                max_tokens=250,
+            )
+
+            contenido = response.choices[0].message.content.strip()
+            desafios = extraer_json(contenido)
+            if not desafios:
+                print(f"⚠️ Intento {intento}: No se detectó JSON válido")
+                continue
+
+            # Evitar repetir desafíos recientes
+            for cat in ["CrossFit", "Alimentación", "Bienestar"]:
+                if cat in desafios and str(desafios[cat]) in recientes.get(cat, set()):
+                    print(f"⚠️ Desafío repetido en {cat}, se genera variante")
+                    desafios[cat] = f"{desafios[cat]} (variante {intento})"
+
+            return desafios
+
+        except Exception as e:
+            print(f"⚠️ Intento {intento}: Error generando desafío: {e}")
+
+    # Si falla todos los intentos
+    return {"Error": "No se pudo generar JSON válido tras varios intentos"}
+
 def generar_desafios_diarios():
     recientes = obtener_desafios_recientes()
     prompt = (
@@ -87,36 +120,7 @@ def generar_desafios_diarios():
         "Cada desafío debe ser una frase breve, clara, científica y pragmática. "
         "Devuelve solo un objeto JSON válido, sin texto adicional."
     )
-
-    contenido = ""
-    try:
-        response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            messages=[
-                {"role": "system", "content": "Eres un especialista en rendimiento humano, nutrición y fisiología. Devuelve JSON limpio."},
-                {"role": "user", "content": prompt},
-            ],
-            temperature=0.4,
-            max_tokens=250,
-        )
-
-        contenido = response.choices[0].message.content.strip()
-        desafios = extraer_json(contenido)
-        if not desafios:
-            raise ValueError("No se detectó JSON válido en la respuesta")
-
-        # Evitar repetir desafíos recientes
-        for cat in ["CrossFit", "Alimentación", "Bienestar"]:
-            if cat in desafios and str(desafios[cat]) in recientes.get(cat, set()):
-                desafios[cat] = f"{desafios[cat]} (variante)"
-
-        return desafios
-
-    except Exception as e:
-        print("⚠️ Error generando desafíos")
-        print("Contenido devuelto por la IA:", contenido)
-        print("Detalle del error:", str(e))
-        return {"Error": "Respuesta no es JSON válido", "Contenido": contenido, "Detalle": str(e)}
+    return generar_desafio_por_categoria(prompt, recientes)
 
 # =========================================================
 # 🚀 ENVÍO DE DESAFÍOS A TELEGRAM
@@ -144,7 +148,6 @@ def ejecutar_ciclo_desafios():
         enviar_a_telegram(mensaje)
         time.sleep(3)  # pausa entre mensajes
 
-    # Guardar historial
     guardar_historial(fecha, desafios)
 
 # =========================================================
