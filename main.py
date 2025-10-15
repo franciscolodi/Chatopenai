@@ -128,7 +128,15 @@ async def main():
     await app.run_polling()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import asyncio
+
+    try:
+        asyncio.get_running_loop()
+        # Ya hay un loop activo → crea tarea
+        asyncio.get_event_loop().create_task(main())
+    except RuntimeError:
+        # No hay loop activo → ejecuta normalmente
+        asyncio.run(main())
 
 
 
