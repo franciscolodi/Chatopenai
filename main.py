@@ -71,15 +71,13 @@ def obtener_desafios_recientes(dias=5):
 # 🧠 GENERADOR DE DESAFÍOS (IA)
 # =========================================================
 
-
-
 def generar_desafios_diarios():
     recientes = obtener_desafios_recientes()
     prompt = (
         f"Genera tres desafíos diarios distintos y concisos en español, uno por categoría: "
         f"CrossFit, Alimentación y Bienestar. Evita repetir estos desafíos recientes: {recientes}. "
         "Cada desafío debe ser una frase breve, clara, científica y pragmática. "
-        "Devuelve SOLO un objeto JSON válido, sin texto adicional."
+        "Devuelve solo un objeto JSON válido, sin texto adicional."
     )
 
     try:
@@ -95,15 +93,11 @@ def generar_desafios_diarios():
 
         contenido = response.choices[0].message.content.strip()
 
-        # Extraer solo JSON usando regex
-        json_match = re.search(r"\{.*\}", contenido, re.DOTALL)
-        if json_match:
-            contenido_json = json_match.group()
-            desafios = json.loads(contenido_json)
-        else:
+        desafios = extraer_json(contenido)
+        if not desafios:
             raise ValueError(f"No se detectó JSON válido en la respuesta: {contenido}")
 
-        # Validar que no repita desafíos recientes (backup)
+        # Evitar repetir desafíos recientes
         for cat in ["CrossFit", "Alimentación", "Bienestar"]:
             if cat in desafios and desafios[cat] in recientes.get(cat, set()):
                 desafios[cat] = f"{desafios[cat]} (variante)"
@@ -112,6 +106,7 @@ def generar_desafios_diarios():
 
     except Exception as e:
         return {"Error": "Respuesta no es JSON válido", "Contenido": contenido, "Detalle": str(e)}
+
 
 
 # =========================================================
@@ -151,6 +146,7 @@ if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
+
 
 
 
