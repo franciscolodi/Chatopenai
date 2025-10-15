@@ -2,4 +2,6 @@ requests
 python-telegram-bot==13.7
 python-dotenv
 huggingface-hub
+groq
+
 
