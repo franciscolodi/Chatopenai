@@ -118,14 +118,6 @@ async def registrar(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # 🧩 MAIN BOT
 # =========================================================
 
-async def main():
-    app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
-
-    app.add_handler(CommandHandler("desafios", enviar_desafios))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, registrar))
-
-    print("🤖 Bot IA en marcha — modo científico vanguardista")
-    await app.run_polling()
 
 if __name__ == "__main__":
     from telegram.ext import ApplicationBuilder
@@ -139,3 +131,4 @@ if __name__ == "__main__":
     
     # Ejecuta polling de manera segura, sin asyncio.run ni loop.run_forever
     app.run_polling()
+
