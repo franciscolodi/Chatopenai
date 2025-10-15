@@ -143,10 +143,16 @@ def ejecutar_ciclo_desafios():
     header = f"🧭 Desafíos del día — {fecha}"
     enviar_a_telegram(header)
 
-    for categoria, texto in desafios.items():
-        mensaje = f"📘 {categoria}:\n{texto}"
-        enviar_a_telegram(mensaje)
-        time.sleep(3)  # pausa entre mensajes
+    for categoria, contenido in desafios.items():
+    # Si el contenido es un dict con clave 'desafío', extraemos el texto
+    if isinstance(contenido, dict) and 'desafío' in contenido:
+        texto = contenido['desafío']
+    else:
+        texto = str(contenido)  # fallback
+    mensaje = f"📘 {categoria}:\n{texto}"
+    enviar_a_telegram(mensaje)
+    time.sleep(3)
+
 
     guardar_historial(fecha, desafios)
 
@@ -158,3 +164,4 @@ if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
+
