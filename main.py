@@ -9,6 +9,8 @@ import os
 import time
 import json
 import random
+import re
+
 
 # --- Configuración ---
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
@@ -69,14 +71,15 @@ def obtener_desafios_recientes(dias=5):
 # 🧠 GENERADOR DE DESAFÍOS (IA)
 # =========================================================
 
+
+
 def generar_desafios_diarios():
     recientes = obtener_desafios_recientes()
     prompt = (
         f"Genera tres desafíos diarios distintos y concisos en español, uno por categoría: "
         f"CrossFit, Alimentación y Bienestar. Evita repetir estos desafíos recientes: {recientes}. "
         "Cada desafío debe ser una frase breve, clara, científica y pragmática. "
-        "Devuelve **solo** un objeto JSON válido, sin texto adicional, sin Markdown. "
-        "Cada valor debe ser una frase breve."
+        "Devuelve SOLO un objeto JSON válido, sin texto adicional."
     )
 
     try:
@@ -91,20 +94,25 @@ def generar_desafios_diarios():
         )
 
         contenido = response.choices[0].message.content.strip()
-        contenido = contenido.replace("```json", "").replace("```", "").strip()
-        desafios = json.loads(contenido)
+
+        # Extraer solo JSON usando regex
+        json_match = re.search(r"\{.*\}", contenido, re.DOTALL)
+        if json_match:
+            contenido_json = json_match.group()
+            desafios = json.loads(contenido_json)
+        else:
+            raise ValueError(f"No se detectó JSON válido en la respuesta: {contenido}")
 
         # Validar que no repita desafíos recientes (backup)
-        for cat in desafios:
-            if desafios[cat] in recientes.get(cat, set()):
-                # Añadir un pequeño modificador para variar
+        for cat in ["CrossFit", "Alimentación", "Bienestar"]:
+            if cat in desafios and desafios[cat] in recientes.get(cat, set()):
                 desafios[cat] = f"{desafios[cat]} (variante)"
+
         return desafios
 
-    except json.JSONDecodeError:
-        return {"Error": "Respuesta no es JSON válido", "Contenido": contenido}
     except Exception as e:
-        return {"Error": str(e)}
+        return {"Error": "Respuesta no es JSON válido", "Contenido": contenido, "Detalle": str(e)}
+
 
 # =========================================================
 # 🚀 ENVÍO DE DESAFÍOS A TELEGRAM
@@ -143,5 +151,6 @@ if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
+
 
 
