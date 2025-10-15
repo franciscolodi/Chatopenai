@@ -15,7 +15,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 HIST_PATH = "historial_desafios.json"
-MAX_REINTENTOS = 3
+MAX_REINTENTOS = 5  # aumentamos para más robustez
 
 # --- Inicializar clientes ---
 client = Groq(api_key=GROQ_API_KEY)
@@ -62,38 +62,51 @@ def obtener_desafios_recientes(dias=5):
     return recientes
 
 # =========================================================
-# 🧠 UTILIDAD PARA EXTRAER JSON
+# 🧠 UTILIDAD PARA EXTRAER JSON ROBUSTO
 # =========================================================
 
-def extraer_json(texto):
+def extraer_json_robusto(texto):
+    """
+    Extrae JSON de texto que puede contener comillas simples, listas o texto extra.
+    """
     try:
-        match = re.search(r'\{.*\}', texto, re.DOTALL)
+        # reemplazar comillas simples por dobles
+        texto_corr = re.sub(r"'", '"', texto)
+
+        # buscar primer dict JSON
+        match = re.search(r'\{.*\}', texto_corr, re.DOTALL)
         if match:
             return json.loads(match.group())
     except json.JSONDecodeError:
-        return None
+        # limpieza extra: quitar saltos de línea y espacios repetidos
+        texto_corr = re.sub(r'\s+', ' ', texto_corr)
+        match = re.search(r'\{.*\}', texto_corr)
+        if match:
+            try:
+                return json.loads(match.group())
+            except:
+                return None
     return None
 
 # =========================================================
-# 🧠 GENERADOR DE DESAFÍOS (IA)
+# 🧠 GENERADOR DE DESAFÍOS
 # =========================================================
 
 def generar_desafio_por_categoria(prompt, recientes):
-    """Genera un objeto JSON válido de desafíos, reintentando si es necesario"""
     for intento in range(1, MAX_REINTENTOS + 1):
         try:
             response = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[
-                    {"role": "system", "content": "Eres un especialista en rendimiento humano, nutrición y fisiología. Devuelve JSON limpio."},
+                    {"role": "system", "content": "Eres un especialista en rendimiento humano, nutrición y fisiología. Devuelve solo JSON válido."},
                     {"role": "user", "content": prompt},
                 ],
                 temperature=0.4,
-                max_tokens=250,
+                max_tokens=300,
             )
 
             contenido = response.choices[0].message.content.strip()
-            desafios = extraer_json(contenido)
+            desafios = extraer_json_robusto(contenido)
             if not desafios:
                 print(f"⚠️ Intento {intento}: No se detectó JSON válido")
                 continue
@@ -101,7 +114,6 @@ def generar_desafio_por_categoria(prompt, recientes):
             # Evitar repetir desafíos recientes
             for cat in ["CrossFit", "Alimentación", "Bienestar"]:
                 if cat in desafios and str(desafios[cat]) in recientes.get(cat, set()):
-                    print(f"⚠️ Desafío repetido en {cat}, se genera variante")
                     desafios[cat] = f"{desafios[cat]} (variante {intento})"
 
             return desafios
@@ -109,21 +121,22 @@ def generar_desafio_por_categoria(prompt, recientes):
         except Exception as e:
             print(f"⚠️ Intento {intento}: Error generando desafío: {e}")
 
-    # Si falla todos los intentos
     return {"Error": "No se pudo generar JSON válido tras varios intentos"}
 
 def generar_desafios_diarios():
     recientes = obtener_desafios_recientes()
     prompt = (
-        f"Genera tres desafíos diarios distintos y concisos en español, uno por categoría: "
-        f"CrossFit, Alimentación y Bienestar. Evita repetir estos desafíos recientes: {recientes}. "
+        f"Genera tres desafíos diarios distintos y concisos en español: CrossFit, Alimentación y Bienestar. "
+        f"Evita repetir estos desafíos recientes: {recientes}. "
         "Cada desafío debe ser una frase breve, clara, científica y pragmática. "
-        "Devuelve solo un objeto JSON válido, sin texto adicional."
+        "Devuelve solo un JSON con la estructura: "
+        '{"CrossFit": "texto", "Alimentación": "texto", "Bienestar": "texto"} '
+        "Nada más, sin listas ni comentarios."
     )
     return generar_desafio_por_categoria(prompt, recientes)
 
 # =========================================================
-# 🚀 ENVÍO DE DESAFÍOS A TELEGRAM
+# 🚀 ENVÍO A TELEGRAM
 # =========================================================
 
 def enviar_a_telegram(mensaje):
@@ -144,11 +157,7 @@ def ejecutar_ciclo_desafios():
     enviar_a_telegram(header)
 
     for categoria, contenido in desafios.items():
-        # Extraer texto si el desafío viene como dict
-        if isinstance(contenido, dict) and 'desafío' in contenido:
-            texto = contenido['desafío']
-        else:
-            texto = str(contenido)
+        texto = str(contenido)  # ahora siempre string
         mensaje = f"📘 {categoria}:\n{texto}"
         enviar_a_telegram(mensaje)
         time.sleep(3)
