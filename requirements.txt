@@ -1,8 +1,9 @@
 requests
-python-telegram-bot==20.7
+python-telegram-bot==13.7
 python-dotenv
 huggingface-hub
 groq
+
 
 
 
