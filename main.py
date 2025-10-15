@@ -128,16 +128,14 @@ async def main():
     await app.run_polling()
 
 if __name__ == "__main__":
-    try:
-        loop = asyncio.get_running_loop()
-    except RuntimeError:
-        loop = None
+    from telegram.ext import ApplicationBuilder
 
-    if loop and loop.is_running():
-        # 🔹 Entorno con event loop activo (GitHub, Jupyter, etc.)
-        print("⚙️ Detectado event loop activo — ejecutando sin cerrar el bucle")
-        loop.create_task(main())
-    else:
-        # 🔹 Ejecución normal (terminal o script independiente)
-        asyncio.run(main())
+    # Construye la app
+    app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
+    app.add_handler(CommandHandler("desafios", enviar_desafios))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, registrar))
 
+    print("🤖 Bot IA en marcha — modo científico vanguardista")
+    
+    # Ejecuta polling de manera segura, sin asyncio.run ni loop.run_forever
+    app.run_polling()
