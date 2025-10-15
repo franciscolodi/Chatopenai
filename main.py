@@ -19,21 +19,21 @@ client = Groq(api_key=GROQ_API_KEY)
 bot = Bot(token=TELEGRAM_TOKEN)
 
 
-# --- Generar desafíos diarios ---
 def generar_desafios_diarios():
     prompt = (
         "Genera tres desafíos diarios distintos y concisos en español, uno por categoría: "
         "CrossFit, Alimentación y Bienestar. "
         "Cada desafío debe tener tono sobrio, informativo, científico y pragmático. "
         "Evita frases motivacionales o inspiracionales. "
-        "Formato de salida JSON con las claves: 'CrossFit', 'Alimentación', 'Bienestar'."
+        "Devuelve **solo** un objeto JSON válido, sin texto adicional, sin explicación ni formato Markdown. "
+        "Cada valor debe ser una sola frase breve y clara."
     )
 
     try:
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[
-                {"role": "system", "content": "Eres un especialista en rendimiento humano, nutrición y fisiología."},
+                {"role": "system", "content": "Eres un especialista en rendimiento humano, nutrición y fisiología. Responde solo con JSON válido."},
                 {"role": "user", "content": prompt},
             ],
             temperature=0.4,
@@ -42,16 +42,18 @@ def generar_desafios_diarios():
 
         contenido = response.choices[0].message.content.strip()
 
-        # Intentar parsear JSON generado por la IA
-        try:
-            desafios = json.loads(contenido)
-        except json.JSONDecodeError:
-            desafios = {"Mensaje": contenido}
+        # limpiar posibles bloques de Markdown o texto extra
+        contenido = contenido.replace("```json", "").replace("```", "").strip()
 
+        desafios = json.loads(contenido)
         return desafios
+
+    except json.JSONDecodeError:
+        return {"Error": "Respuesta no es JSON válido", "Contenido": contenido}
 
     except Exception as e:
         return {"Error": str(e)}
+
 
 
 # --- Enviar a Telegram ---
@@ -80,3 +82,4 @@ if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
+
