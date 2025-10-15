@@ -32,7 +32,7 @@ def generar_desafio(desafio):
     )
 
     response = client.chat.completions.create(
-        model="mixtral-8x7b-32768",  # También puedes usar "llama3-8b-8192"
+        model="llama-3.1-8b-instant",  # También puedes usar "llama3-8b-8192"
         messages=[
             {"role": "system", "content": "Eres un coach experto en motivación, fitness y bienestar."},
             {"role": "user", "content": prompt},
@@ -61,3 +61,4 @@ if __name__ == "__main__":
     print("✨ Iniciando ciclo de desafíos motivacionales...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
+
