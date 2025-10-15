@@ -3,8 +3,7 @@
 # =========================================================
 
 from groq import Groq
-from telegram import Bot, Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram import Bot
 from datetime import datetime
 from typing import Dict, Any
 import os, json, asyncio
@@ -129,3 +128,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
