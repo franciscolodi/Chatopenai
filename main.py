@@ -128,15 +128,16 @@ async def main():
     await app.run_polling()
 
 if __name__ == "__main__":
-    import asyncio
-
     try:
-        asyncio.get_running_loop()
-        # Ya hay un loop activo → crea tarea
-        asyncio.get_event_loop().create_task(main())
+        loop = asyncio.get_running_loop()
     except RuntimeError:
-        # No hay loop activo → ejecuta normalmente
+        loop = None
+
+    if loop and loop.is_running():
+        # 🔹 Entorno con event loop activo (GitHub, Jupyter, etc.)
+        print("⚙️ Detectado event loop activo — ejecutando sin cerrar el bucle")
+        loop.create_task(main())
+    else:
+        # 🔹 Ejecución normal (terminal o script independiente)
         asyncio.run(main())
-
-
 
