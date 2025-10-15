@@ -26,9 +26,17 @@ bot = Bot(token=TELEGRAM_TOKEN)
 
 def cargar_historial():
     if os.path.exists(HIST_PATH):
-        with open(HIST_PATH, "r", encoding="utf-8") as f:
-            return json.load(f)
+        try:
+            with open(HIST_PATH, "r", encoding="utf-8") as f:
+                contenido = f.read().strip()
+                if not contenido:  # archivo vacío
+                    return {}
+                return json.loads(contenido)
+        except json.JSONDecodeError:
+            print(f"⚠️ Historial corrupto o inválido, se reinicia: {HIST_PATH}")
+            return {}
     return {}
+
 
 def guardar_historial(fecha, desafios):
     historial = cargar_historial()
@@ -129,3 +137,4 @@ if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
     ejecutar_ciclo_desafios()
     print("✅ Envío completado.")
+
