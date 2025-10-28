@@ -49,19 +49,24 @@ def guardar_historial(fecha: str, desafios: dict):
     fechas = sorted(hist.keys())[-MAX_DIAS_HIST:]
     hist = {k: hist[k] for k in fechas}
 
-    HIST_PATH.parent.mkdir(parents=True, exist_ok=True)
-    tmp = HIST_PATH.with_suffix(".tmp")
-
     try:
+        HIST_PATH.parent.mkdir(parents=True, exist_ok=True)
+        tmp = HIST_PATH.with_suffix(".tmp")
+
         with open(tmp, "w", encoding="utf-8") as f:
             json.dump(hist, f, ensure_ascii=False, indent=2)
+
         os.replace(tmp, HIST_PATH)
-        log(f"Historial actualizado: {HIST_PATH.resolve()}")
+        log(f"✅ Historial actualizado correctamente: {HIST_PATH.resolve()}")
+
     except Exception as e:
-        log(f"Error guardando historial: {e}", "ERROR")
+        import traceback
+        traceback.print_exc()
+        log(f"💥 Error guardando historial: {e}", "ERROR")
     finally:
         if tmp.exists():
             tmp.unlink(missing_ok=True)
+
 
 
 # =========================================================
@@ -166,3 +171,4 @@ if __name__ == "__main__":
         fecha = datetime.now().strftime("%Y-%m-%d")
         guardar_historial(fecha, {"Error": str(e)})
         sys.exit(1)
+
