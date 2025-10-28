@@ -1,6 +1,6 @@
 from groq import Groq
 from telegram import Bot
-from telegram.constants import ParseMode
+from telegram import ParseMode
 from datetime import datetime
 from pathlib import Path
 import os, json, re, time, sys, tempfile, shutil, traceback
@@ -255,3 +255,4 @@ if __name__ == "__main__":
         except Exception:
             pass
         sys.exit(1)
+
