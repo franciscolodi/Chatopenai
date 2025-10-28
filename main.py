@@ -153,4 +153,26 @@ def extraer_json_robusto(texto: str):
         pass
 
     # 2) Normalizar comillas simples → dobles (cuidado básico)
-    texto_corr = re.sub(r"'", '"_
+    texto_corr = re.sub(r"'", '"', texto)
+
+    # 3) Tomar el primer dict que parezca JSON con DOTALL
+    m = re.search(r"\{.*\}", texto_corr, flags=re.DOTALL)
+    if not m:
+        return None
+
+    candidato = m.group(0)
+
+    # 4) Quitar secuencias de escape rotas tipo "\n" mal cerradas
+    candidato = re.sub(r'\\(?![\\/"bfnrt])', r'\\\\', candidato)
+
+    # 5) Reintento final
+    try:
+        return json.loads(candidato)
+    except Exception:
+        # Limpieza mínima extra: compactar espacios
+        candidato2 = re.sub(r"\s+", " ", candidato)
+        try:
+            return json.loads(candidato2)
+        except Exception:
+            return None
+
