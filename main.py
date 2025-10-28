@@ -1,122 +1,108 @@
-# =========================================================
-# 🧠 PROYECTO: Generador de desafíos diarios con IA (Groq API)
-# Autor: Francisco Lodi
-# =========================================================
-# ✨ Características:
-# - Diseño modular, limpio y robusto
-# - Historial JSON con escritura atómica y backup automático
-# - Parser JSON tolerante
-# - Envío a Telegram con logs claros
-# =========================================================
-
+from groq import Groq
+from telegram import Bot
 from datetime import datetime
 from pathlib import Path
-from telegram import Bot
-from groq import Groq
-import os, json, re, time, tempfile, shutil, sys
+import os, json, re, time, tempfile, sys
 
 # =========================================================
-# ⚙️ CONFIGURACIÓN GLOBAL
+# ⚙️ CONFIGURACIÓN
 # =========================================================
 
-CONFIG = {
-    "GROQ_API_KEY": os.getenv("GROQ_API_KEY"),
-    "TELEGRAM_TOKEN": os.getenv("TELEGRAM_TOKEN"),
-    "TELEGRAM_CHAT_ID": os.getenv("TELEGRAM_CHAT_ID"),
-    "HIST_PATH": Path(os.getenv("HIST_PATH", "historial_desafios.json")),
-    "MAX_DIAS_HIST": int(os.getenv("MAX_DIAS_HIST", "30")),
-    "MAX_REINTENTOS": int(os.getenv("MAX_REINTENTOS", "5")),
-    "PAUSA_SEG": float(os.getenv("PAUSA_SEG", "2")),
-    "DRY_RUN": os.getenv("DRY_RUN", "0") == "1",
-}
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+HIST_PATH = Path(os.getenv("HIST_PATH", "historial_desafios.json"))
+DRY_RUN = os.getenv("DRY_RUN", "0") == "1"
 
-# Inicializar clientes solo si no es modo prueba
-GROQ = Groq(api_key=CONFIG["GROQ_API_KEY"]) if not CONFIG["DRY_RUN"] else None
-BOT = Bot(token=CONFIG["TELEGRAM_TOKEN"]) if not CONFIG["DRY_RUN"] else None
+MAX_REINTENTOS = 5
+MAX_DIAS_HIST = 30
+
+# Inicializar clientes (solo si no es modo prueba)
+client = Groq(api_key=GROQ_API_KEY) if not DRY_RUN else None
+bot = Bot(token=TELEGRAM_TOKEN) if not DRY_RUN else None
 
 
 # =========================================================
-# 📘 UTILIDADES DE ARCHIVO
+# 📘 HISTORIAL ROBUSTO
 # =========================================================
 
-def leer_json(path: Path) -> dict:
-    if not path.exists():
+def leer_historial() -> dict:
+    """Lee el JSON, o crea uno vacío si no existe o está corrupto."""
+    if not HIST_PATH.exists():
+        print(f"ℹ️ Creando nuevo historial en {HIST_PATH.resolve()}")
         return {}
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        backup = path.with_suffix(f".bak_{datetime.now():%Y%m%d-%H%M%S}")
-        shutil.copy2(path, backup)
-        print(f"⚠️ JSON corrupto, backup en {backup}")
+        with open(HIST_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        print("⚠️ Historial corrupto, reiniciado.")
         return {}
-    except Exception as e:
-        print(f"⚠️ Error leyendo {path.name}: {e}")
-        return {}
-
-def escribir_json_atomico(path: Path, data: dict):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile("w", delete=False, encoding="utf-8") as tmp:
-        json.dump(data, tmp, ensure_ascii=False, indent=2)
-        tmp.flush(); os.fsync(tmp.fileno())
-        temp_name = tmp.name
-    os.replace(temp_name, path)
 
 def guardar_historial(fecha: str, desafios: dict):
-    path = CONFIG["HIST_PATH"]
-    hist = leer_json(path)
+    """Guarda o crea historial en JSON (escritura segura)."""
+    hist = leer_historial()
     hist[fecha] = desafios
-    fechas = sorted(hist.keys())[-CONFIG["MAX_DIAS_HIST"]:]
+    # Mantiene solo los últimos N días
+    fechas = sorted(hist.keys())[-MAX_DIAS_HIST:]
     hist = {k: hist[k] for k in fechas}
-    escribir_json_atomico(path, hist)
-    print(f"📝 Historial actualizado ({len(hist)} días) → {path.resolve()}")
+
+    HIST_PATH.parent.mkdir(parents=True, exist_ok=True)
+    tmp = HIST_PATH.with_suffix(".tmp")
+
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(hist, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, HIST_PATH)
+    print(f"✅ Historial guardado → {HIST_PATH.resolve()}")
 
 
 # =========================================================
-# 🧠 LÓGICA DE DESAFÍOS
+# 🧠 IA Y PARSER
 # =========================================================
 
 def extraer_json_robusto(texto: str):
-    if not texto:
-        return None
-    for attempt in range(2):
-        try:
-            return json.loads(texto)
-        except:
-            texto = re.sub(r"'", '"', texto)
-            texto = re.sub(r'\\(?![\\/"bfnrt])', r'\\\\', texto)
-            match = re.search(r"\{.*\}", texto, re.DOTALL)
-            texto = match.group(0) if match else texto
+    """Intenta recuperar un JSON incluso si viene con comillas o texto extra."""
+    try:
+        return json.loads(texto)
+    except:
+        texto = re.sub(r"'", '"', texto)
+        match = re.search(r"\{.*\}", texto, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(0))
+            except:
+                pass
     return None
 
-def generar_desafios(recientes: dict) -> dict:
-    if CONFIG["DRY_RUN"]:
-        print("🧪 Modo prueba (DRY_RUN=1)")
+def generar_desafios() -> dict:
+    """Genera o simula desafíos diarios."""
+    if DRY_RUN:
+        print("🧪 Modo prueba (sin IA ni Telegram)")
         return {
             "CrossFit": "5 series de 10 burpees.",
-            "Alimentación": "Incluye 2 frutas frescas hoy.",
-            "Bienestar": "Medita 10 minutos antes de dormir."
+            "Alimentación": "Consume dos frutas frescas hoy.",
+            "Bienestar": "Realiza 10 minutos de respiración profunda."
         }
 
     prompt = (
-        "Genera tres desafíos diarios distintos en español: CrossFit, Alimentación y Bienestar. "
-        f"Evita repetir: {recientes}. Devuelve solo JSON con "
+        "Genera tres desafíos diarios distintos: CrossFit, Alimentación y Bienestar. "
+        "Devuelve solo JSON con formato "
         '{"CrossFit": "texto", "Alimentación": "texto", "Bienestar": "texto"}.'
     )
 
-    for intento in range(1, CONFIG["MAX_REINTENTOS"] + 1):
+    for intento in range(1, MAX_REINTENTOS + 1):
         try:
-            resp = GROQ.chat.completions.create(
+            resp = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[
                     {"role": "system", "content": "Devuelve solo JSON válido."},
-                    {"role": "user", "content": prompt},
+                    {"role": "user", "content": prompt}
                 ],
                 temperature=0.4,
                 max_tokens=300,
             )
-            texto = resp.choices[0].message.content.strip()
-            data = extraer_json_robusto(texto)
-            if data and all(k in data for k in ("CrossFit", "Alimentación", "Bienestar")):
+            txt = resp.choices[0].message.content.strip()
+            data = extraer_json_robusto(txt)
+            if isinstance(data, dict):
                 return data
         except Exception as e:
             print(f"⚠️ Intento {intento} falló: {e}")
@@ -124,43 +110,39 @@ def generar_desafios(recientes: dict) -> dict:
 
 
 # =========================================================
-# 📬 ENVÍO A TELEGRAM
+# 📬 TELEGRAM
 # =========================================================
 
-def enviar_telegram(msg: str):
-    t = datetime.now().strftime('%H:%M:%S')
-    texto = f"⏰ {t}\n{msg}"
-    if CONFIG["DRY_RUN"]:
+def enviar(msg: str):
+    """Envía mensaje o lo imprime si es DRY_RUN."""
+    timestamp = datetime.now().strftime('%H:%M:%S')
+    texto = f"⏰ {timestamp}\n{msg}"
+    if DRY_RUN:
         print(f"[Simulado] {texto}")
     else:
-        BOT.send_message(chat_id=CONFIG["TELEGRAM_CHAT_ID"], text=texto)
+        bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=texto)
     print(texto)
 
 
 # =========================================================
-# 🚀 CICLO PRINCIPAL
+# 🚀 PROCESO PRINCIPAL
 # =========================================================
 
-def ejecutar():
+def main():
     fecha = datetime.now().strftime("%Y-%m-%d")
-    print(f"\n🧠 Iniciando ciclo de desafíos — {fecha}\n")
+    print(f"\n🧠 Iniciando ciclo {fecha}")
 
-    recientes = leer_json(CONFIG["HIST_PATH"])
-    recientes = {k: set(v.values()) if isinstance(v, dict) else set() for k, v in recientes.items()}
-    desafios = generar_desafios(recientes)
-
+    desafios = generar_desafios()
     if "Error" in desafios:
-        enviar_telegram(f"⚠️ Error: {desafios['Error']}")
-        guardar_historial(fecha, desafios)
-        return
-
-    enviar_telegram(f"🧭 Desafíos del día — {fecha}")
-    for cat, texto in desafios.items():
-        enviar_telegram(f"📘 {cat}:\n{texto}")
-        time.sleep(CONFIG["PAUSA_SEG"])
+        enviar(f"⚠️ {desafios['Error']}")
+    else:
+        enviar(f"🧭 Desafíos del día — {fecha}")
+        for cat, texto in desafios.items():
+            enviar(f"📘 {cat}: {texto}")
+            time.sleep(2)
 
     guardar_historial(fecha, desafios)
-    print("✅ Proceso completado correctamente.\n")
+    print("✅ Ejecución completada.\n")
 
 
 # =========================================================
@@ -169,8 +151,9 @@ def ejecutar():
 
 if __name__ == "__main__":
     try:
-        ejecutar()
+        main()
     except Exception as e:
-        print(f"💥 Error crítico: {e}")
-        guardar_historial(datetime.now().strftime("%Y-%m-%d"), {"Error": str(e)})
+        print(f"💥 Error inesperado: {e}")
+        fecha = datetime.now().strftime("%Y-%m-%d")
+        guardar_historial(fecha, {"Error": str(e)})
         sys.exit(1)
