@@ -140,15 +140,16 @@ def extraer_json_robusto(texto: str):
 
 
 def generar_desafios() -> dict:
-    """Genera desafíos variados con IA Groq basándose en historial previo y temas rotativos."""
+    """Genera desafíos variados con IA Groq basándose en historial previo, temas rotativos y un WOD."""
     import random
 
     if DRY_RUN:
         log("🧪 Modo prueba activo — generación simulada.")
         return {
             "CrossFit": "Haz un EMOM de 10 minutos alternando 12 burpees y 15 air squats.",
-            "Alimentación": "Incluye una ensalada con hojas verdes y una fuente de proteínas en tu almuerzo.",
-            "Bienestar": "Dedica 10 minutos a estirarte mientras escuchas música relajante."
+            "Alimentación": "Incluye una ensalada con hojas verdes y proteínas en tu almuerzo.",
+            "Bienestar": "Dedica 10 minutos a estirarte escuchando música relajante.",
+            "WOD": "Completa un AMRAP de 20 minutos con 15 kettlebell swings, 10 push-ups y 200m de carrera."
         }
 
     # === Obtener historial reciente ===
@@ -159,41 +160,48 @@ def generar_desafios() -> dict:
     ]) if ultimos else "Sin registros previos."
 
     # === Temas rotativos ===
-    temas_cf = ["fuerza", "resistencia", "cardio", "movilidad", "agilidad", "core"]
+    temas_cf = ["fuerza", "resistencia", "cardio", "movilidad", "core", "agilidad"]
     temas_food = ["vegetales", "hidratación", "proteínas", "legumbres", "fibra", "balance"]
     temas_well = ["mindfulness", "descanso", "gratitud", "contacto social", "naturaleza", "autoestima"]
+    tipos_wod = ["EMOM", "AMRAP", "For Time"]
 
     tema_actual = {
         "CrossFit": random.choice(temas_cf),
         "Alimentación": random.choice(temas_food),
-        "Bienestar": random.choice(temas_well)
+        "Bienestar": random.choice(temas_well),
+        "WOD": random.choice(tipos_wod)
     }
 
     random_seed = random.randint(1000, 9999)
 
     # === Prompt avanzado ===
     prompt = f"""
-Eres un entrenador personal, nutricionista y coach de bienestar con creatividad diaria.
+Eres un coach experto en CrossFit, nutrición y bienestar con creatividad diaria.
+
 A continuación se muestran los desafíos recientes:
 {texto_hist}
 
-Tu tarea es crear NUEVOS desafíos para hoy, completamente diferentes a los anteriores.
-Evita repetir estructuras, números o acciones similares.
-
-Céntrate hoy en los siguientes temas:
+Crea NUEVOS desafíos diferentes para hoy, evitando repetir ejercicios, comidas o rutinas similares.
+Hoy enfócate en los siguientes temas:
 - CrossFit: {tema_actual['CrossFit']}
 - Alimentación: {tema_actual['Alimentación']}
 - Bienestar: {tema_actual['Bienestar']}
+- WOD del día: {tema_actual['WOD']} (duración mínima 20 minutos)
 
-Requisitos:
-- Sé específico pero breve (una o dos frases por categoría).
-- Incluye una breve motivación o frase positiva final en cada desafío.
-- Mantén realismo: no uses ejercicios o rutinas extremas.
-- Devuelve SOLO JSON válido con este formato exacto:
+📋 Reglas para el WOD:
+- Si el tipo es EMOM: define un esquema claro (por ejemplo, “20 min EMOM: min 1 burpees, min 2 kettlebell swings…”).
+- Si el tipo es AMRAP: define un set de ejercicios variados para repetir durante 20 minutos o más.
+- Si es For Time: especifica un número total de rondas o repeticiones y un objetivo temporal (mínimo 20 minutos de trabajo).
+- Incluye movimientos funcionales variados (cardio, fuerza, core, gimnásticos).
+- Usa lenguaje motivacional, como lo haría un coach de box.
+- No incluyas explicaciones, solo texto conciso del desafío.
+
+Devuelve SOLO un JSON válido con este formato:
 {{
   "CrossFit": "texto",
   "Alimentación": "texto",
-  "Bienestar": "texto"
+  "Bienestar": "texto",
+  "WOD": "texto"
 }}
 
 Semilla creativa aleatoria: {random_seed}
@@ -205,17 +213,18 @@ Semilla creativa aleatoria: {random_seed}
             resp = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[
-                    {"role": "system", "content": "Eres un generador de desafíos creativos. Responde solo con JSON válido."},
+                    {"role": "system", "content": "Eres un generador de desafíos CrossFit y bienestar. Responde solo con JSON válido."},
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.7,
-                max_tokens=300,
+                temperature=0.8,
+                max_tokens=400,
             )
 
             content = resp.choices[0].message.content.strip()
             data = extraer_json_robusto(content)
-            if isinstance(data, dict) and all(k in data for k in ["CrossFit", "Alimentación", "Bienestar"]):
-                log(f"🎲 Desafíos generados exitosamente (semilla {random_seed})")
+
+            if isinstance(data, dict) and all(k in data for k in ["CrossFit", "Alimentación", "Bienestar", "WOD"]):
+                log(f"🎯 Desafíos generados exitosamente (semilla {random_seed})")
                 return data
 
             log(f"Intento {intento}: respuesta no válida, reintento...", "WARN")
@@ -225,6 +234,7 @@ Semilla creativa aleatoria: {random_seed}
         time.sleep(min(intento, 3))  # backoff progresivo
 
     return {"Error": "No se pudieron generar desafíos válidos tras varios intentos."}
+
 
 
 
@@ -305,5 +315,6 @@ if __name__ == "__main__":
         except Exception:
             pass
         sys.exit(1)
+
 
 
