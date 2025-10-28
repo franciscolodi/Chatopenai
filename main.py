@@ -175,29 +175,35 @@ def generar_desafios() -> dict:
 
     random_seed = random.randint(1000, 9999)
 
-    # === Prompt avanzado ===
+        # === Prompt avanzado ===
     prompt = f"""
-Eres un coach experto en CrossFit, nutrición y bienestar con creatividad diaria.
+Eres un coach profesional de CrossFit, nutrición y bienestar.
 
 A continuación se muestran los desafíos recientes:
 {texto_hist}
 
-Crea NUEVOS desafíos diferentes para hoy, evitando repetir ejercicios, comidas o rutinas similares.
-Hoy enfócate en los siguientes temas:
+Debes crear NUEVOS desafíos para hoy, completamente distintos a los anteriores.
+
+💪 CATEGORÍAS Y DIFERENCIAS:
+- **CrossFit:** Ejercicio técnico o enfoque corto (de 5–10 minutos) orientado a técnica, fuerza o movilidad específica.
+- **Alimentación:** Consejo o acción práctica para mejorar la dieta diaria (puede incluir ideas de platos, hábitos o hidratación).
+- **Bienestar:** Actividad para cuidar la mente o el cuerpo fuera del entrenamiento (descanso, mindfulness, respiración, gratitud, lectura, contacto social, etc.).
+- **WOD:** Entrenamiento completo del día (de al menos 20 minutos), puede ser EMOM, AMRAP o For Time, con un esquema claro de ejercicios variados (cardio, fuerza, core, gimnásticos).
+
+📋 REGLAS:
+- No repitas contenido o estructura entre CrossFit y WOD.
+- El WOD debe ser diferente al ejercicio técnico del bloque CrossFit.
+- Usa variedad: cambia el tipo de estímulo, tiempo o modalidad cada día.
+- No incluyas explicaciones, solo los desafíos en formato breve y motivador.
+- Añade una frase final positiva en cada bloque.
+
+🎯 Hoy los temas de enfoque son:
 - CrossFit: {tema_actual['CrossFit']}
 - Alimentación: {tema_actual['Alimentación']}
 - Bienestar: {tema_actual['Bienestar']}
-- WOD del día: {tema_actual['WOD']} (duración mínima 20 minutos)
+- WOD del día: {tema_actual['WOD']} (mínimo 20 minutos)
 
-📋 Reglas para el WOD:
-- Si el tipo es EMOM: define un esquema claro (por ejemplo, “20 min EMOM: min 1 burpees, min 2 kettlebell swings…”).
-- Si el tipo es AMRAP: define un set de ejercicios variados para repetir durante 20 minutos o más.
-- Si es For Time: especifica un número total de rondas o repeticiones y un objetivo temporal (mínimo 20 minutos de trabajo).
-- Incluye movimientos funcionales variados (cardio, fuerza, core, gimnásticos).
-- Usa lenguaje motivacional, como lo haría un coach de box.
-- No incluyas explicaciones, solo texto conciso del desafío.
-
-Devuelve SOLO un JSON válido con este formato:
+Devuelve **únicamente JSON válido** con este formato exacto:
 {{
   "CrossFit": "texto",
   "Alimentación": "texto",
@@ -205,8 +211,9 @@ Devuelve SOLO un JSON válido con este formato:
   "WOD": "texto"
 }}
 
-Semilla creativa aleatoria: {random_seed}
+Semilla creativa: {random_seed}
 """
+
 
     # === Llamada al modelo ===
     for intento in range(1, MAX_REINTENTOS + 1):
@@ -337,6 +344,7 @@ if __name__ == "__main__":
         except Exception:
             pass
         sys.exit(1)
+
 
 
 
