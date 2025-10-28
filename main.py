@@ -140,42 +140,92 @@ def extraer_json_robusto(texto: str):
 
 
 def generar_desafios() -> dict:
-    """Genera desafíos con IA Groq o simula si está en modo prueba."""
+    """Genera desafíos variados con IA Groq basándose en historial previo y temas rotativos."""
+    import random
+
     if DRY_RUN:
         log("🧪 Modo prueba activo — generación simulada.")
         return {
-            "CrossFit": "Haz 4 rondas de 12 burpees y 12 push-ups.",
-            "Alimentación": "Incluye 2 frutas y evita azúcar refinada.",
-            "Bienestar": "Dedica 10 minutos a respiración y estiramientos."
+            "CrossFit": "Haz un EMOM de 10 minutos alternando 12 burpees y 15 air squats.",
+            "Alimentación": "Incluye una ensalada con hojas verdes y una fuente de proteínas en tu almuerzo.",
+            "Bienestar": "Dedica 10 minutos a estirarte mientras escuchas música relajante."
         }
 
-    prompt = (
-        "Genera tres desafíos diarios distintos: CrossFit, Alimentación y Bienestar. "
-        "Devuelve EXCLUSIVAMENTE JSON válido con formato "
-        '{"CrossFit": "texto", "Alimentación": "texto", "Bienestar": "texto"}. '
-        "Sin texto adicional fuera del JSON."
-    )
+    # === Obtener historial reciente ===
+    hist = leer_historial()
+    ultimos = list(hist.values())[-3:]  # últimos 3 días
+    texto_hist = "\n".join([
+        f"Día {i+1}: {json.dumps(d, ensure_ascii=False)}" for i, d in enumerate(ultimos)
+    ]) if ultimos else "Sin registros previos."
 
+    # === Temas rotativos ===
+    temas_cf = ["fuerza", "resistencia", "cardio", "movilidad", "agilidad", "core"]
+    temas_food = ["vegetales", "hidratación", "proteínas", "legumbres", "fibra", "balance"]
+    temas_well = ["mindfulness", "descanso", "gratitud", "contacto social", "naturaleza", "autoestima"]
+
+    tema_actual = {
+        "CrossFit": random.choice(temas_cf),
+        "Alimentación": random.choice(temas_food),
+        "Bienestar": random.choice(temas_well)
+    }
+
+    random_seed = random.randint(1000, 9999)
+
+    # === Prompt avanzado ===
+    prompt = f"""
+Eres un entrenador personal, nutricionista y coach de bienestar con creatividad diaria.
+A continuación se muestran los desafíos recientes:
+{texto_hist}
+
+Tu tarea es crear NUEVOS desafíos para hoy, completamente diferentes a los anteriores.
+Evita repetir estructuras, números o acciones similares.
+
+Céntrate hoy en los siguientes temas:
+- CrossFit: {tema_actual['CrossFit']}
+- Alimentación: {tema_actual['Alimentación']}
+- Bienestar: {tema_actual['Bienestar']}
+
+Requisitos:
+- Sé específico pero breve (una o dos frases por categoría).
+- Incluye una breve motivación o frase positiva final en cada desafío.
+- Mantén realismo: no uses ejercicios o rutinas extremas.
+- Devuelve SOLO JSON válido con este formato exacto:
+{{
+  "CrossFit": "texto",
+  "Alimentación": "texto",
+  "Bienestar": "texto"
+}}
+
+Semilla creativa aleatoria: {random_seed}
+"""
+
+    # === Llamada al modelo ===
     for intento in range(1, MAX_REINTENTOS + 1):
         try:
             resp = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[
-                    {"role": "system", "content": "Responde solo con un JSON válido."},
-                    {"role": "user",   "content": prompt}
+                    {"role": "system", "content": "Eres un generador de desafíos creativos. Responde solo con JSON válido."},
+                    {"role": "user", "content": prompt}
                 ],
-                temperature=0.4,
+                temperature=0.7,
                 max_tokens=300,
             )
+
             content = resp.choices[0].message.content.strip()
             data = extraer_json_robusto(content)
-            if isinstance(data, dict) and (EXPECTED_KEYS & set(data.keys())):
-                return _maybe_coerce_to_expected(data)
-            log(f"Intento {intento}: respuesta no válida; reintento…", "WARN")
+            if isinstance(data, dict) and all(k in data for k in ["CrossFit", "Alimentación", "Bienestar"]):
+                log(f"🎲 Desafíos generados exitosamente (semilla {random_seed})")
+                return data
+
+            log(f"Intento {intento}: respuesta no válida, reintento...", "WARN")
         except Exception as e:
             log(f"Intento {intento} falló: {e}", "WARN")
-        time.sleep(min(intento, 3))  # backoff suave
-    return {"Error": "No se pudo generar desafíos válidos."}
+
+        time.sleep(min(intento, 3))  # backoff progresivo
+
+    return {"Error": "No se pudieron generar desafíos válidos tras varios intentos."}
+
 
 
 # =========================================================
@@ -255,4 +305,5 @@ if __name__ == "__main__":
         except Exception:
             pass
         sys.exit(1)
+
 
