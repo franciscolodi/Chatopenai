@@ -147,7 +147,7 @@ def generar_desafios() -> dict:
     if DRY_RUN:
         log("🧪 Modo prueba activo — generación simulada.")
         return {
-            "CrossFit": "Haz un EMOM de 10 minutos alternando 12 burpees y 15 air squats.",
+            "CrossFit": "Realiza 5 rondas de 15 power cleans y 20 double unders. Enfócate en la técnica y la respiración.",
             "Alimentación": "Incluye una ensalada con hojas verdes y proteínas en tu almuerzo.",
             "Bienestar": "Dedica 10 minutos a estirarte escuchando música relajante.",
             "WOD": "Completa un AMRAP de 20 minutos con 15 kettlebell swings, 10 push-ups y 200m de carrera."
@@ -337,6 +337,7 @@ if __name__ == "__main__":
         except Exception:
             pass
         sys.exit(1)
+
 
 
 
