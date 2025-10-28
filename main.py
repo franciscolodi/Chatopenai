@@ -176,3 +176,100 @@ def extraer_json_robusto(texto: str):
         except Exception:
             return None
 
+# =========================================================
+# 🧠 GENERADOR DE DESAFÍOS
+# =========================================================
+
+def generar_desafio_por_categoria(prompt: str, recientes: dict) -> dict:
+    for intento in range(1, MAX_REINTENTOS + 1):
+        try:
+            response = client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[
+                    {"role": "system",
+                     "content": (
+                         "Eres un especialista en rendimiento humano, nutrición y fisiología. "
+                         "Devuelve únicamente JSON válido con claves exactamente: "
+                         '"CrossFit", "Alimentación", "Bienestar".'
+                     )},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.4,
+                max_tokens=300,
+            )
+
+            contenido = (response.choices[0].message.content or "").strip()
+            desafios = extraer_json_robusto(contenido)
+            if not (isinstance(desafios, dict) and
+                    all(k in desafios for k in ("CrossFit", "Alimentación", "Bienestar")) and
+                    all(isinstance(desafios[k], str) for k in desafios)):
+                print(f"⚠️ Intento {intento}: No se detectó JSON válido con estructura esperada")
+                continue
+
+            # Evitar repetir desafíos recientes
+            for cat in ("CrossFit", "Alimentación", "Bienestar"):
+                if desafios[cat] in recientes.get(cat, set()):
+                    desafios[cat] = f"{desafios[cat]} (variante {intento})"
+
+            return desafios
+
+        except Exception as e:
+            print(f"⚠️ Intento {intento}: Error generando desafío: {e}")
+
+    return {"Error": "No se pudo generar JSON válido tras varios intentos"}
+
+def generar_desafios_diarios() -> dict:
+    recientes = obtener_desafios_recientes()
+    prompt = (
+        "Genera tres desafíos diarios distintos y concisos en español: "
+        "CrossFit, Alimentación y Bienestar. "
+        f"Evita repetir estos desafíos recientes (texto exacto): {recientes}. "
+        "Cada desafío debe ser UNA sola frase breve, clara, basada en evidencia y pragmática. "
+        "Devuelve únicamente un JSON con la estructura exacta: "
+        '{"CrossFit": "texto", "Alimentación": "texto", "Bienestar": "texto"} '
+        "Sin listas, sin comentarios, sin texto extra."
+    )
+    return generar_desafio_por_categoria(prompt, recientes)
+
+# =========================================================
+# 🚀 ENVÍO A TELEGRAM
+# =========================================================
+
+def enviar_a_telegram(mensaje: str):
+    timestamp = datetime.now().strftime('%H:%M:%S')
+    body = f"⏰ {timestamp}\n{mensaje}"
+    bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=body)
+    print(body)
+
+# =========================================================
+# 🔁 CICLO PRINCIPAL
+# =========================================================
+
+def ejecutar_ciclo_desafios():
+    fecha = datetime.now().strftime("%Y-%m-%d")
+    desafios = generar_desafios_diarios()
+
+    if "Error" in desafios:
+        enviar_a_telegram(f"⚠️ Error generando desafíos: {desafios['Error']}")
+        guardar_historial(fecha, {"Error": desafios["Error"]})
+        return
+
+    header = f"🧭 Desafíos del día — {fecha}"
+    enviar_a_telegram(header)
+
+    for categoria, contenido in desafios.items():
+        mensaje = f"📘 {categoria}:\n{contenido}"
+        enviar_a_telegram(mensaje)
+        time.sleep(3)
+
+    # 👉 Guardado robusto y atómico
+    guardar_historial(fecha, desafios)
+
+# =========================================================
+# 🏁 EJECUCIÓN
+# =========================================================
+
+if __name__ == "__main__":
+    print("🧠 Iniciando ciclo de desafíos diarios...")
+    ejecutar_ciclo_desafios()
+    print("✅ Envío completado.")
