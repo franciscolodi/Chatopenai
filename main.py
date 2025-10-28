@@ -246,3 +246,12 @@ if __name__ == "__main__":
     try:
         run_cycle()
     except Exception as e:
+        log(f"💥 Error fatal: {e}", "ERROR")
+        traceback.print_exc()
+        # Aún así, tratamos de registrar el error del día
+        try:
+            fecha = datetime.now().strftime("%Y-%m-%d")
+            guardar_historial(fecha, {"Error": str(e)})
+        except Exception:
+            pass
+        sys.exit(1)
