@@ -101,7 +101,8 @@ def guardar_historial(fecha: str, desafios: dict):
 # =========================================================
 # 🧠 IA Y PARSER
 # =========================================================
-EXPECTED_KEYS = {"CrossFit", "Alimentación", "Bienestar"}
+EXPECTED_KEYS = {"CrossFit", "Alimentación", "Bienestar", "WOD"}
+
 
 def _maybe_coerce_to_expected(d: dict) -> dict:
     """Normaliza claves esperadas si vienen con mayúsculas/minúsculas u otros espacios."""
@@ -251,37 +252,58 @@ def md2_escape(text: str) -> str:
 # 📬 TELEGRAM
 # =========================================================
 def enviar_desafios(fecha: str, desafios: dict):
-    """Envía mensaje a Telegram (o simula) sin romper el flujo si falla."""
+    """Envía mensaje a Telegram (o simula) con los desafíos diarios, incluyendo el WOD."""
     if not isinstance(desafios, dict):
         desafios = {"Error": "Formato inesperado"}
 
+    # --- Modo error ---
     if "Error" in desafios:
         titulo = md2_escape(f"⚠️ Error ({fecha})")
         cuerpo = md2_escape(str(desafios["Error"]))
         msg = f"*{titulo}*\n\n{cuerpo}"
     else:
-        titulo = md2_escape(f"🧭 Desafíos del día ({fecha})")
-        # Formato con bullets
+        # --- Título dinámico según el tipo de WOD ---
+        tema_dia = ""
+        if "WOD" in desafios:
+            wod_text = desafios["WOD"].lower()
+            if "amrap" in wod_text:
+                tema_dia = "🔥 Día de resistencia"
+            elif "emom" in wod_text:
+                tema_dia = "⚡ Día de constancia"
+            elif "for time" in wod_text:
+                tema_dia = "🏁 Día de intensidad"
+            else:
+                tema_dia = "💪 Día de energía"
+        else:
+            tema_dia = "🧭 Desafíos del día"
+
+        titulo = md2_escape(f"{tema_dia} ({fecha})")
+
+        # --- Cuerpo del mensaje ---
         lineas = []
-        for k in ["CrossFit", "Alimentación", "Bienestar"]:
+        for k in ["CrossFit", "Alimentación", "Bienestar", "WOD"]:
             if k in desafios:
                 lineas.append(f"• *{md2_escape(k)}*: {md2_escape(str(desafios[k]))}")
+
         cuerpo = "\n".join(lineas) if lineas else md2_escape(json.dumps(desafios, ensure_ascii=False))
         msg = f"*{titulo}*\n\n{cuerpo}"
 
+    # --- Modo simulación ---
     if DRY_RUN:
         print(f"[Simulado Telegram] {msg}")
         return
 
+    # --- Envío real ---
     try:
         bot.send_message(
             chat_id=TELEGRAM_CHAT_ID,
             text=msg,
             parse_mode=ParseMode.MARKDOWN_V2
         )
+        log("📩 Desafíos enviados correctamente a Telegram.")
     except Exception as e:
-        # Logueamos pero NO detenemos el guardado de historial
         log(f"Telegram error: {e}", "ERROR")
+
 
 
 # =========================================================
@@ -315,6 +337,7 @@ if __name__ == "__main__":
         except Exception:
             pass
         sys.exit(1)
+
 
 
 
