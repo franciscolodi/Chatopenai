@@ -5,6 +5,9 @@ on:
     - cron: "0 11 * * *"  # 11:00 UTC = 08:00 Chile
   workflow_dispatch:
 
+permissions:
+  contents: write  # 👈 necesario para poder hacer push
+
 jobs:
   run-bot:
     runs-on: ubuntu-latest
@@ -12,6 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 👈 permite commit y push
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -19,13 +24,30 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run reminder bot
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python main.py
+          DRY_RUN: "0"
+          STATE_DIR: "./state"
+        run: |
+          mkdir -p state
+          python main.py
+          echo "Contenido del historial:"
+          cat state/historial_desafios.json || echo "No se generó el archivo."
+
+      - name: Commit and push updated history
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state/historial_desafios.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "daily: update historial_desafios.json [skip ci]"
+            git push
+          else
+            echo "No hay cambios que guardar."
+          fi
