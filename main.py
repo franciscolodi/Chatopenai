@@ -1,6 +1,11 @@
 # =========================================================
 # 🧠 PROYECTO: Generador de desafíos diarios con IA (Groq API)
 # =========================================================
+# - Historial JSON con escritura atómica y backup si se corrompe
+# - Parser JSON robusto para respuestas con ruido
+# - Deduplicación de desafíos recientes por categoría
+# - Envío a Telegram con logs
+# =========================================================
 
 from groq import Groq
 from telegram import Bot
@@ -12,28 +17,44 @@ import json
 import re
 import tempfile
 import shutil
+import sys
 
-# --- Configuración ---
+# =========================================================
+# 🔧 CONFIGURACIÓN
+# =========================================================
+
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
-# Puedes moverlo a una carpeta dedicada si corres en GitHub Actions:
-# por ejemplo ".data/historial_desafios.json"
-HIST_PATH = Path("historial_desafios.json")
+# Puedes sobreescribir la ruta del historial con env var HIST_PATH
+# Ej: HIST_PATH=".data/historial_desafios.json"
+HIST_PATH = Path(os.getenv("HIST_PATH", "historial_desafios.json"))
 
-MAX_REINTENTOS = 5  # aumentamos para más robustez
-MAX_DIAS_HIST = 30  # mantener 30 días máximo
+# Parámetros de operación
+MAX_REINTENTOS = int(os.getenv("MAX_REINTENTOS", "5"))   # reintentos del LLM
+MAX_DIAS_HIST = int(os.getenv("MAX_DIAS_HIST", "30"))    # días a mantener en historial
+PAUSA_ENTRE_MENSAJES = float(os.getenv("PAUSA_SEG", "2"))  # segundos entre mensajes Telegram
 
-# --- Validaciones básicas de credenciales ---
-if not GROQ_API_KEY:
-    raise RuntimeError("❌ Falta GROQ_API_KEY en variables de entorno.")
-if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
-    raise RuntimeError("❌ Falta TELEGRAM_TOKEN o TELEGRAM_CHAT_ID en variables de entorno.")
+# Modo seco: no envía a Telegram ni llama a Groq (para pruebas locales)
+DRY_RUN = os.getenv("DRY_RUN", "0") == "1"
 
-# --- Inicializar clientes ---
-client = Groq(api_key=GROQ_API_KEY)
-bot = Bot(token=TELEGRAM_TOKEN)
+# =========================================================
+# ✅ VALIDACIONES BÁSICAS
+# =========================================================
+
+if not DRY_RUN:
+    if not GROQ_API_KEY:
+        raise RuntimeError("❌ Falta GROQ_API_KEY en variables de entorno.")
+    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
+        raise RuntimeError("❌ Falta TELEGRAM_TOKEN o TELEGRAM_CHAT_ID en variables de entorno.")
+
+# =========================================================
+# 🚀 CLIENTES
+# =========================================================
+
+client = Groq(api_key=GROQ_API_KEY) if not DRY_RUN else None
+bot = Bot(token=TELEGRAM_TOKEN) if not DRY_RUN else None
 
 # =========================================================
 # 🧩 UTILIDADES DE HISTORIAL (robustas y atómicas)
@@ -43,16 +64,18 @@ def _escritura_atomica_json(path: Path, data: dict):
     """
     Escribe JSON de forma atómica:
     1) escribe en un archivo temporal
-    2) hace replace al destino
+    2) fsync
+    3) replace al destino
     """
     path.parent.mkdir(parents=True, exist_ok=True)
+    print(f"📝 Guardando historial en: {path.resolve()}")
     with tempfile.NamedTemporaryFile("w", delete=False, encoding="utf-8") as tmp:
         json.dump(data, tmp, ensure_ascii=False, indent=2)
         tmp.flush()
         os.fsync(tmp.fileno())
         tmp_name = tmp.name
-    # Reemplazo atómico (en *nix siempre; en Windows también funciona con replace)
     os.replace(tmp_name, path)
+    print(f"✅ Historial escrito. Tamaño: {path.stat().st_size} bytes")
 
 def _backup_si_corrupto(path: Path):
     """
@@ -64,7 +87,7 @@ def _backup_si_corrupto(path: Path):
         bak = path.with_suffix(path.suffix + f".{ts}.bak")
         try:
             shutil.copy2(path, bak)
-            print(f"⚠️ Historial inválido. Copia de seguridad creada: {bak}")
+            print(f"⚠️ Historial inválido. Backup creado: {bak}")
         except Exception as e:
             print(f"⚠️ No se pudo crear backup del historial: {e}")
 
@@ -75,14 +98,15 @@ def cargar_historial() -> dict:
     Si está corrupto, hace backup y devuelve {}.
     """
     if not HIST_PATH.exists():
+        print(f"ℹ️ No existe historial aún en {HIST_PATH.resolve()}")
         return {}
     try:
         texto = HIST_PATH.read_text(encoding="utf-8").strip()
         if not texto:
+            print("ℹ️ Historial vacío, devolviendo {}")
             return {}
         data = json.loads(texto)
         if not isinstance(data, dict):
-            # Si alguien guardó una lista u otro tipo, lo respaldamos y reiniciamos
             _backup_si_corrupto(HIST_PATH)
             return {}
         return data
@@ -95,9 +119,8 @@ def cargar_historial() -> dict:
 
 def _ordenar_y_recortar(historial: dict, max_dias: int = MAX_DIAS_HIST) -> dict:
     """
-    Mantiene solo las últimas 'max_dias' fechas (ordenadas ascendente por fecha)
+    Mantiene solo las últimas 'max_dias' fechas (ordenadas por fecha asc).
     """
-    # Las claves tienen formato YYYY-MM-DD → orden lexicográfico sirve
     fechas = sorted(k for k in historial.keys() if re.fullmatch(r"\d{4}-\d{2}-\d{2}", k))
     if len(fechas) > max_dias:
         fechas = fechas[-max_dias:]
@@ -106,12 +129,22 @@ def _ordenar_y_recortar(historial: dict, max_dias: int = MAX_DIAS_HIST) -> dict:
 def guardar_historial(fecha: str, desafios: dict):
     """
     Guarda (o reemplaza) la entrada de una 'fecha' con escritura atómica, y
-    conserva solo MAX_DIAS_HIST días.
+    conserva solo MAX_DIAS_HIST días. Verifica post-escritura.
     """
-    historial = cargar_historial()
-    historial[fecha] = desafios
-    historial = _ordenar_y_recortar(historial, MAX_DIAS_HIST)
-    _escritura_atomica_json(HIST_PATH, historial)
+    try:
+        historial = cargar_historial()
+        historial[fecha] = desafios
+        historial = _ordenar_y_recortar(historial, MAX_DIAS_HIST)
+        _escritura_atomica_json(HIST_PATH, historial)
+
+        # Verificación inmediata
+        verif = cargar_historial()
+        if fecha in verif:
+            print(f"🔎 Verificado: {fecha} presente en historial ({len(verif)} días guardados).")
+        else:
+            print("❌ Verificación falló: fecha no encontrada tras guardar.")
+    except Exception as e:
+        print(f"❌ No se pudo guardar historial: {e}")
 
 def obtener_desafios_recientes(dias: int = 5) -> dict:
     """
@@ -121,7 +154,7 @@ def obtener_desafios_recientes(dias: int = 5) -> dict:
     """
     historial = cargar_historial()
     # ordenamos y quedamos con los últimos N
-    ordenado = _ordenar_y_recortar(historial, max_dias=max(len(historial), dias))
+    ordenado = _ordenar_y_recortar(historial, max_dias=max(len(historial), dias) or dias)
     ultimos_items = list(ordenado.items())[-dias:]
 
     recientes = {"CrossFit": set(), "Alimentación": set(), "Bienestar": set()}
@@ -131,6 +164,7 @@ def obtener_desafios_recientes(dias: int = 5) -> dict:
         for cat in recientes.keys():
             if cat in dia and isinstance(dia[cat], str):
                 recientes[cat].add(dia[cat])
+    print(f"🧾 Desafíos recientes para evitar repeticiones: { {k: len(v) for k,v in recientes.items()} }")
     return recientes
 
 # =========================================================
@@ -140,19 +174,21 @@ def obtener_desafios_recientes(dias: int = 5) -> dict:
 def extraer_json_robusto(texto: str):
     """
     Intenta extraer el primer objeto JSON '{}' del texto.
+    - Intento directo
     - Normaliza comillas simples → dobles cuando parece JSON malformado.
-    - Elimina basura fuera del primer '{}' grande.
+    - Extrae el primer bloque {...} con DOTALL.
+    - Repara escapes rotos mínimos y reintenta.
     """
     if not texto:
         return None
 
-    # 1) Intento directo rápido (por si viene limpio)
+    # 1) Intento directo por si viene limpio
     try:
         return json.loads(texto)
     except Exception:
         pass
 
-    # 2) Normalizar comillas simples → dobles (cuidado básico)
+    # 2) Normalizar comillas simples → dobles (tolerante)
     texto_corr = re.sub(r"'", '"', texto)
 
     # 3) Tomar el primer dict que parezca JSON con DOTALL
@@ -162,7 +198,7 @@ def extraer_json_robusto(texto: str):
 
     candidato = m.group(0)
 
-    # 4) Quitar secuencias de escape rotas tipo "\n" mal cerradas
+    # 4) Quitar secuencias de escape rotas tipo \X no estándar
     candidato = re.sub(r'\\(?![\\/"bfnrt])', r'\\\\', candidato)
 
     # 5) Reintento final
@@ -177,10 +213,19 @@ def extraer_json_robusto(texto: str):
             return None
 
 # =========================================================
-# 🧠 GENERADOR DE DESAFÍOS
+# 🧠 GENERADOR DE DESAFÍOS (Groq)
 # =========================================================
 
 def generar_desafio_por_categoria(prompt: str, recientes: dict) -> dict:
+    if DRY_RUN:
+        # Modo pruebas sin Groq
+        print("🔬 DRY_RUN=1 → devolviendo desafíos dummy")
+        return {
+            "CrossFit": "5 series de 10 burpees con 60s de descanso.",
+            "Alimentación": "Incluye 2 porciones de verduras de hoja verde en el almuerzo.",
+            "Bienestar": "10 minutos de respiración diafragmática antes de dormir."
+        }
+
     for intento in range(1, MAX_REINTENTOS + 1):
         try:
             response = client.chat.completions.create(
@@ -199,6 +244,7 @@ def generar_desafio_por_categoria(prompt: str, recientes: dict) -> dict:
             )
 
             contenido = (response.choices[0].message.content or "").strip()
+            print(f"🧩 Respuesta LLM (recortada 200 chars): {contenido[:200]}{'...' if len(contenido)>200 else ''}")
             desafios = extraer_json_robusto(contenido)
             if not (isinstance(desafios, dict) and
                     all(k in desafios for k in ("CrossFit", "Alimentación", "Bienestar")) and
@@ -232,12 +278,15 @@ def generar_desafios_diarios() -> dict:
     return generar_desafio_por_categoria(prompt, recientes)
 
 # =========================================================
-# 🚀 ENVÍO A TELEGRAM
+# ✉️ ENVÍO A TELEGRAM
 # =========================================================
 
 def enviar_a_telegram(mensaje: str):
     timestamp = datetime.now().strftime('%H:%M:%S')
     body = f"⏰ {timestamp}\n{mensaje}"
+    if DRY_RUN:
+        print(f"[DRY_RUN] {body}")
+        return
     bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=body)
     print(body)
 
@@ -247,6 +296,10 @@ def enviar_a_telegram(mensaje: str):
 
 def ejecutar_ciclo_desafios():
     fecha = datetime.now().strftime("%Y-%m-%d")
+    print(f"📅 Fecha de hoy: {fecha}")
+    print(f"📂 Working dir: {os.getcwd()}")
+    print(f"🗂 Archivo historial: {HIST_PATH.resolve()}")
+
     desafios = generar_desafios_diarios()
 
     if "Error" in desafios:
@@ -260,10 +313,24 @@ def ejecutar_ciclo_desafios():
     for categoria, contenido in desafios.items():
         mensaje = f"📘 {categoria}:\n{contenido}"
         enviar_a_telegram(mensaje)
-        time.sleep(3)
+        time.sleep(PAUSA_ENTRE_MENSAJES)
 
-    # 👉 Guardado robusto y atómico
+    # Guardado robusto y verificado
     guardar_historial(fecha, desafios)
+
+# =========================================================
+# 🧪 PRUEBA RÁPIDA DEL HISTORIAL (opcional)
+# =========================================================
+
+def prueba_historial_minima():
+    print("=== PRUEBA HISTORIAL ===")
+    fecha = datetime.now().strftime("%Y-%m-%d")
+    dummy = {"CrossFit": "Test CF", "Alimentación": "Test Ali", "Bienestar": "Test Bien"}
+    guardar_historial(fecha, dummy)
+    data = cargar_historial()
+    print(f"📦 Claves del historial (últimas 3): {list(data.keys())[-3:]}")
+    print(f"📄 Ubicación: {HIST_PATH.resolve()}")
+    print("=== FIN PRUEBA ===")
 
 # =========================================================
 # 🏁 EJECUCIÓN
@@ -271,5 +338,17 @@ def ejecutar_ciclo_desafios():
 
 if __name__ == "__main__":
     print("🧠 Iniciando ciclo de desafíos diarios...")
-    ejecutar_ciclo_desafios()
-    print("✅ Envío completado.")
+    # Activa esta línea una sola vez si quieres validar guardado sin Groq/Telegram:
+    # os.environ["DRY_RUN"] = "1"; DRY_RUN = True; prueba_historial_minima()
+    try:
+        ejecutar_ciclo_desafios()
+        print("✅ Envío completado.")
+    except Exception as e:
+        print(f"💥 Error en ejecución principal: {e}")
+        # En caso de error, deja una marca en el historial para diagnóstico
+        fecha = datetime.now().strftime("%Y-%m-%d")
+        try:
+            guardar_historial(fecha, {"Error": f"MainException: {e}"})
+        except Exception as e2:
+            print(f"💥 Error adicional guardando historial tras excepción: {e2}")
+        sys.exit(1)
