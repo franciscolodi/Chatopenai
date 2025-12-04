@@ -1,10 +1,4 @@
 {
-  "2025-11-04": {
-    "CrossFit": "Desarrolla tu fuerza con 3 series de 10 repeticiones de sentadillas con mancuernas pesadas, enfocándote en mantener la espalda recta y la pelvis baja, ¡fortalece tus piernas!",
-    "Alimentación": "Añade 1 taza de espinacas frescas a tu ensalada de la noche, acompañadas de 1/4 de taza de semillas de calabaza y un vaso de agua con limón, ¡nutre tu cuerpo con nutrientes!",
-    "Bienestar": "Invita a un amigo o familiar a jugar un juego de mesa o hacer un rompecabezas juntos, ¡necesitas conexión y diversión en tu vida!",
-    "WOD": "For Time en 25 minutos: 5 minutos de remo, luego 10 minutos de sentadillas con mancuernas, 5 minutos de flexiones de pecho con mancuernas y finalmente 5 minutos de saltos de agachadas con cambio de dirección, ¡aprovecha tu tiempo y fuerza!"
-  },
   "2025-11-05": {
     "CrossFit": "Realiza 5 minutos de jogging en el lugar con saltos de trote, enfocándote en mantener la cadencia y recuperar el aliento",
     "Alimentación": "Incluye 6 vasos de agua en tu día, asegurándote de hidratarte adecuadamente a lo largo de tus actividades",
@@ -178,5 +172,11 @@
     "Alimentación": "Incluye al menos 2 porciones de brócoli cocido en tus comidas principales del día para aumentar tus nutrientes",
     "Bienestar": "Organiza un pícnic en un parque cercano y disfruta del paisaje natural con amigos y familia",
     "WOD": "AMRAP en 25 minutos: 5 minutos de bicicleta estática, luego 4 minutos de sentadillas con mancuernas, 5 minutos de abdominales con una pelota de goma, 4 minutos de saltos en paralelas y finalmente 7 minutos de caminata en la cinta de correr, ¡saca todo lo que tengas en ti!"
+  },
+  "2025-12-04": {
+    "CrossFit": "Realiza 10 minutos de caminata en la cinta de correr con carga pesada para mejorar tu resistencia y equilibrio.",
+    "Alimentación": "Incluye una variedad de colores en tus comidas principales del día, como frutas y verduras de diferentes tonos, para lograr un balance nutricional.",
+    "Bienestar": "Sal a pasear por un jardín botánico local y disfruta de la diversidad de plantas y flores.",
+    "WOD": "AMRAP en 28 minutos: 5 minutos de bicicleta estática, luego 6 minutos de abdominales con una pelota de goma, 4 minutos de saltos en paralelas, 5 minutos de caminata en la cinta de correr con carga ligera y finalmente 8 minutos de remo en el asiento, ¡saca todo lo que tengas en ti!"
   }
 }
