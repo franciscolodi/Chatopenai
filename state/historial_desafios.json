@@ -1,10 +1,4 @@
 {
-  "2025-11-18": {
-    "CrossFit": "Desarrolla tu agilidad con 30 segundos de saltos en paralelas, repitiendo 6 series con 20 segundos de descanso entre ellas, ¡aprende a cambiar de dirección rápidamente!",
-    "Alimentación": "Asegúrate de beber al menos 8 vasos de agua al día, incluyendo una taza de agua 30 minutos antes de cada entrenamiento, ¡hidrátate para rendir al máximo!",
-    "Bienestar": "Toma 15 minutos para escribir en un diario tres cosas que agradeces cada día, refuerza la gratitud y la positividad en tu vida, ¡aprende a ver el lado brillante!",
-    "WOD": "AMRAP en 25 minutos: 8 minutos de natación libre, luego 12 minutos de burpees con saltos, 4 minutos de ejercicios de estiramiento dinámico y finalmente 1 minuto de saltos de trote con bandas de resistencia, ¡saca todo lo que tengas en tu interior!"
-  },
   "2025-11-19": {
     "CrossFit": "Realiza 5 series de 8 repeticiones de sentadillas con pesas en cada serie, con 40 segundos de descanso entre series, para trabajar la fuerza de tus piernas y glúteos.",
     "Alimentación": "Agrega 2 porciones de frutas frescas, como plátanos o fresas, a tus comidas diarias para aumentar tu ingesta de fibra y nutrientes.",
@@ -178,5 +172,11 @@
     "Alimentación": "Incluye 2 porciones de pollo cocido (muslo o pechuga) en tus comidas de hoy para aumentar tu ingesta de proteínas y construir músculo.",
     "Bienestar": "Realiza una meditación guiada de 10 minutos para enfocarte en el presente y reducir el estrés.",
     "WOD": "EMOM en 25 minutos: realiza 30 segundos de natación con estilo libre, luego 20 repeticiones de sentadillas con mancuernas, 15 segundos de descanso y repite el ciclo. ¡Alcanza tu límite y siente la emoción de la victoria!"
+  },
+  "2025-12-18": {
+    "CrossFit": "Realiza 3 series de 10 repeticiones de pliés con bandas de resistencia para mejorar tu fuerza y control core",
+    "Alimentación": "Incluye 3 porciones de pescado al horno (salmon, tilapia, etc.) en tus comidas de hoy para aumentar tu ingesta de proteínas magras",
+    "Bienestar": "Realiza una caminata de 30 minutos en un bosque cercano y observa la diversidad de la flora y fauna",
+    "WOD": "For Time en 25 minutos: completa 5 minutos de natación con estilo libre, luego 40 repeticiones de sentadillas con mancuernas, 20 repeticiones de flexiones de brazos y finaliza con 10 minutos de estiramientos dinámicos para los músculos. ¡Siente el poder de la fuerza y la flexibilidad!"
   }
 }
