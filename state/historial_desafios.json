@@ -1,10 +1,4 @@
 {
-  "2026-01-01": {
-    "CrossFit": "Desarrolla tu core con 3 series de 30 segundos de abdominales con toalla, enfócate en la estabilidad y el control, ¡y siente la fuerza en tu centro!",
-    "Alimentación": "Incluye 3 porciones de pescado al horno con quinoa y brócoli en tus comidas de hoy para aumentar la ingesta de proteínas y fibra, ¡y cuida tu cuerpo con nutrientes de alta calidad!",
-    "Bienestar": "Realiza 10 minutos de meditación guiada antes de dormir para relajar tu mente y cuerpo, ¡y despierta listo para enfrentar el día con energía y claridad!",
-    "WOD": "AMRAP en 25 minutos: Completa en el orden establecido: 20 repeticiones de squat con mancuernas, 30 segundos de carrera en cuesta, 15 repeticiones de remo con barra, 10 repeticiones de flexiones de brazos con mancuernas, y repite, ¡y alcanza tu máximo potencial!"
-  },
   "2026-01-02": {
     "CrossFit": "Realiza sprints de 20 metros con pausa de 20 segundos entre cada sprint, enfócate en la velocidad y la recuperación.",
     "Alimentación": "Incluye una porción de lentejas cocidas con verduras y especias en cada comida para aumentar la ingesta de proteínas y fibra.",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade 1 porción de quinoa integral y una porción de brócoli al vapor a tus comidas diarias para equilibrar tus macronutrientes.",
     "Bienestar": "Escribe 3 gráficos de gratitud al día antes de acostarte para reflejar tus experiencias positivas y reflexionar sobre tus logros.",
     "WOD": "AMRAP en 25 minutos: 30 repeticiones de agachadas, 20 repeticiones de remo con pesas de 12 kg, 15 repeticiones de saltos de tijera con pesas de 10 kg; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito y al crecimiento personal!"
+  },
+  "2026-01-31": {
+    "CrossFit": "Desarrolla tu movilidad con 5 series de 10 repeticiones de flexiones de piernas con una barra de 8 kg: enfócate en la técnica y la alineación.",
+    "Alimentación": "Añade 1 porción de ensalada de quinoa con frutas frescas y nueces a tu desayuno para aumentar tus niveles de fibra dietética y proteínas.",
+    "Bienestar": "Practica la técnica de respiración diafragmática de 5 minutos antes de cada entrenamiento para reducir el estrés y mejorar la concentración.",
+    "WOD": "AMRAP en 25 minutos: 15 repeticiones de saltos de tijera con pesas de 10 kg, 30 segundos de natación, 20 repeticiones de press de hombros; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito y al crecimiento personal!"
   }
 }
