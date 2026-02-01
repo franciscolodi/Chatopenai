@@ -1,10 +1,4 @@
 {
-  "2026-01-02": {
-    "CrossFit": "Realiza sprints de 20 metros con pausa de 20 segundos entre cada sprint, enfócate en la velocidad y la recuperación.",
-    "Alimentación": "Incluye una porción de lentejas cocidas con verduras y especias en cada comida para aumentar la ingesta de proteínas y fibra.",
-    "Bienestar": "Escribe tres afirmaciones positivas sobre ti mismo y colócalas en un lugar visible para aumentar tu autoestima.",
-    "WOD": "For Time en 25 minutos: Completa en el orden establecido: 50 metros de natación, 20 repeticiones de remo con barra, 30 segundos de carrera en cuesta, 10 repeticiones de flexiones de brazos con mancuernas, y repite."
-  },
   "2026-01-03": {
     "CrossFit": "Desarrolla tu movilidad con 3 series de 30 segundos de estiramientos dinámicos de piernas, enfócate en la flexibilidad y la extensión.",
     "Alimentación": "Incluye 2 litros de agua mineral en tus comidas para mejorar la hidratación y mantener un nivel óptimo de energía.",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade 1 porción de ensalada de quinoa con frutas frescas y nueces a tu desayuno para aumentar tus niveles de fibra dietética y proteínas.",
     "Bienestar": "Practica la técnica de respiración diafragmática de 5 minutos antes de cada entrenamiento para reducir el estrés y mejorar la concentración.",
     "WOD": "AMRAP en 25 minutos: 15 repeticiones de saltos de tijera con pesas de 10 kg, 30 segundos de natación, 20 repeticiones de press de hombros; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito y al crecimiento personal!"
+  },
+  "2026-02-01": {
+    "CrossFit": "Desarrolla tu capacidad aeróbica con 3 series de 30 segundos de saltos en lugar de 20 repeticiones de saltos de tijera con pesas de 10 kg: enfócate en la velocidad y la alineación.",
+    "Alimentación": "Añade 2 porciones de lentejas cocidas y espinacas al vapor a tus comidas diarias para aumentar tus niveles de proteínas vegetales y fibra dietética.",
+    "Bienestar": "Practica la técnica de mindfulness de 10 minutos antes de cada entrenamiento para mejorar tu concentración y reducir el estrés.",
+    "WOD": "EMOM en 30 minutos: 20 repeticiones de agachadas, 25 repeticiones de remo con pesas de 15 kg, 30 segundos de natación con flotadores; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito!"
   }
 }
