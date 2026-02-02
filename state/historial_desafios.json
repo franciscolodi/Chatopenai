@@ -1,10 +1,4 @@
 {
-  "2026-01-03": {
-    "CrossFit": "Desarrolla tu movilidad con 3 series de 30 segundos de estiramientos dinámicos de piernas, enfócate en la flexibilidad y la extensión.",
-    "Alimentación": "Incluye 2 litros de agua mineral en tus comidas para mejorar la hidratación y mantener un nivel óptimo de energía.",
-    "Bienestar": "Realiza 5 minutos de meditación de cuerpo y mente, enfócate en la respiración y la calma.",
-    "WOD": "For Time en 25 minutos: Completa en el orden establecido: 40 metros de carrera en cuesta, 15 repeticiones de push-up con mancuernas, 20 repeticiones de remo con barra, 30 segundos de saltos de tijera, y repite, ¡y alcanza tu máximo potencial!"
-  },
   "2026-01-04": {
     "CrossFit": "Desarrolla tu fuerza con 3 series de 10 repeticiones de sentadillas con barra, enfócate en la técnica y la estabilidad.",
     "Alimentación": "Incluye una porción de frutos secos y semillas en cada comida para equilibrar tus macronutrientes y mantener tu energía óptima. ¡Siente el poder del balance!",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade 2 porciones de lentejas cocidas y espinacas al vapor a tus comidas diarias para aumentar tus niveles de proteínas vegetales y fibra dietética.",
     "Bienestar": "Practica la técnica de mindfulness de 10 minutos antes de cada entrenamiento para mejorar tu concentración y reducir el estrés.",
     "WOD": "EMOM en 30 minutos: 20 repeticiones de agachadas, 25 repeticiones de remo con pesas de 15 kg, 30 segundos de natación con flotadores; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito!"
+  },
+  "2026-02-02": {
+    "CrossFit": "Desarrolla tu movilidad con abdominales de peso muerto en 5 series de 10 repeticiones con una barra de 10 kg: enfócate en la técnica y la postura.",
+    "Alimentación": "Bebe 2 litros de agua al día y ajusta tus porciones de hidratación según tu actividad física y el clima.",
+    "Bienestar": "Escribe 5 frases positivas sobre ti mismo antes de acostarte cada noche para mejorar tu autoestima.",
+    "WOD": "For Time en 25 minutos: 200 metros de natación, 30 repeticiones de remo con pesas de 12 kg, 15 repeticiones de saltos de tijera con pesas de 10 kg, 20 repeticiones de press de hombros; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito!"
   }
 }
