@@ -1,10 +1,4 @@
 {
-  "2026-01-13": {
-    "CrossFit": "Desarrolla tu fuerza con series de levantamiento de barra en tres direcciones: 3 series de 8 repeticiones de levantamiento de barra lateral, frontal y atrás.",
-    "Alimentación": "Incluye una porción de frutas y una porción de verduras en cada comida para mantener un equilibrio de azúcares naturales y fibra en tu dieta.",
-    "Bienestar": "Aprovecha los 10 minutos para practicar la técnica de relajación progresiva y calma tu mente después de una larga semana de entrenamiento.",
-    "WOD": "AMRAP en 25 minutos: Realiza series de 40 segundos de sprint en cuesta, 20 segundos de reposo, y continúa hasta alcanzar el límite de tiempo."
-  },
   "2026-01-14": {
     "CrossFit": "Desarrolla tu agilidad con 3 series de 10 repeticiones de saltos de tijera, enfócate en la explosividad y la coordinación.",
     "Alimentación": "Incluye 1 porción de carne roja magra en tu dieta diaria, como filete de buey o ternera, para maximizar la construcción de masa muscular.",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade 1 porción de lentejas al día para aumentar tus niveles de proteínas y fibra.",
     "Bienestar": "Pasa 15 minutos en un baño caliente para relajar tus músculos y mejorar tu capacidad de sueño.",
     "WOD": "AMRAP en 25 minutos: 30 segundos de saltos de tijera con pesas de 10 kg, 20 segundos de remo con pesas de 12 kg, 30 segundos de burpees con pesas de 8 kg, 20 segundos de saltos en lugar con pesas de 10 kg; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La velocidad y la precisión te llevarán a la victoria!"
+  },
+  "2026-02-12": {
+    "CrossFit": "Realiza 3 series de 30 segundos de roturas de piernas con una pelota, enfócate en mantener la técnica y controlar la respiración.",
+    "Alimentación": "Añade 1 porción de ensalada de frutas con nueces a tu dieta para aumentar tus niveles de fibra y satisfacción.",
+    "Bienestar": "Pasa 20 minutos en un baño de luces cálidas para mejorar tu autoestima y confianza.",
+    "WOD": "EMOM en 25 minutos: 40 segundos de natación con braza larga, 30 segundos de sentadillas con pesas de 14 kg, 20 segundos de saltos de tijera con pesas de 10 kg, 30 segundos de correr en sitio; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán a la victoria!"
   }
 }
