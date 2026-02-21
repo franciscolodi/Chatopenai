@@ -1,10 +1,4 @@
 {
-  "2026-01-22": {
-    "CrossFit": "Desarrolla tu fuerza con 3 series de 8 repeticiones de sentadillas pesadas con barra, enfócate en la estabilidad y la técnica.",
-    "Alimentación": "Incluye 1 porción de jugo de naranja fresco con hielo en tu refrigerio diario para hidratar y revitalizar tu cuerpo.",
-    "Bienestar": "Realiza un paseo de 15 minutos al aire libre, observa las flores y los pájaros, y conecta con la naturaleza para reducir el estrés.",
-    "WOD": "EMOM en 25 minutos: 40 segundos de remo con pesas, luego 20 segundos de descanso, continúa con 30 segundos de saltos de tijera, 15 segundos de descanso, y así sucesivamente. ¡La resistencia y la disciplina te llevarán a la victoria! ¡Siente la satisfacción de superarte!"
-  },
   "2026-01-23": {
     "CrossFit": "Desarrolla tu resistencia aeróbica con 5 series de 30 segundos de remo con pesas en intervalos de 15 segundos de descanso.",
     "Alimentación": "Incluye 1 porción de ensalada de pollo con aguacate y nueces en tu comida diaria para equilibrar tus macronutrientes.",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade un puñado de semillas de chía al día para incrementar tu ingesta de fibra y nutrientes, combínalas con verduras crudas o en ensaladas: ¡nuestras dietas se nutren de la naturaleza!",
     "Bienestar": "Escribe 5 momentos del día en los que te sientas agradecido, reflexiona sobre la importancia de cada experiencia, y compartelo con un amigo o familiar: ¡Gracias por ser parte de mi vida!",
     "WOD": "EMOM en 25 minutos: 0-5 minutos de jump roping, 5-10 minutos de remo con pesas de 15 kg, 10-15 minutos de sprints en sitio con pesas de 10 kg, 15-20 minutos de burpees con pesas de 14 kg; suma tus repeticiones y alcanza la puntuación máxima: ¡La disciplina y la perseverancia te llevarán a la victoria!"
+  },
+  "2026-02-21": {
+    "CrossFit": "Realiza 3 series de 10 repeticiones de remo con pesas de 10 kg en intervalos de 20 segundos de trabajo y 10 segundos de descanso: ¡Incrementa tu capacidad cardiovascular!",
+    "Alimentación": "Añade una porción de lentejas cocidas con pimiento y cebolla al día para aumentar la ingesta de proteínas y fibra: ¡Descubre la potencia de las legumbres!",
+    "Bienestar": "Pasa 15 minutos en un parque o área verde y observa los detalles de la naturaleza, escucha el sonido de los pájaros y respira profundamente: ¡Conecta con la naturaleza!",
+    "WOD": "AMRAP en 25 minutos: 5 saltos de tijera con pesas de 12 kg, 10 repeticiones de sentadillas con pesas de 16 kg, 10 metros de carrera en sitio; suma tus repeticiones y alcanza la puntuación máxima: ¡La disciplina y la perseverancia te llevarán a la victoria!"
   }
 }
