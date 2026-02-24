@@ -1,10 +1,4 @@
 {
-  "2026-01-25": {
-    "CrossFit": "Desarrolla tu fuerza con 3 series de 8 repeticiones de levantamiento de piernas con barra: enfócate en la técnica y la estabilidad para una mayor eficacia.",
-    "Alimentación": "Incluye 1 porción de pollo a la parrilla con verduras al vapor en tu almuerzo para aumentar tus niveles de proteínas y energía.",
-    "Bienestar": "Realiza una sesión de meditación guiada de 10 minutos al día para mejorar tu autoestima y reducir el estrés.",
-    "WOD": "EMOM en 25 minutos: 40 segundos de correr al trote, luego 20 segundos de descanso; continúa con 30 segundos de remo con pesas, 15 segundos de descanso; y así sucesivamente. ¡La disciplina y la perseverancia te llevarán a la victoria! ¡Siente la satisfacción de superarte!"
-  },
   "2026-01-26": {
     "CrossFit": "Desarrolla tu resistencia con 5 series de 1 minutodel sentadilla lateral con pesas de 15 kg, enfócate en mantener la postura y la técnica.",
     "Alimentación": "Incluye 2 porciones de pollo a la parrilla con verduras al vapor en tus comidas diarias para aumentar tus niveles de proteínas y energía.",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade 1 porción de frutas enteras (fresas, plátanos, naranjas) a cada comida para aumentar tu ingesta de fibra y nutrientes. ¡La naturaleza te brinda la energía que necesitas!",
     "Bienestar": "Invita a un amigo o familiar para tomar un café o té y charlar sobre tus objetivos y metas. ¡El contacto social te enriquece y te motiva!",
     "WOD": "EMOM en 25 minutos: 0-5 minutos de rowing con pesas de 12 kg, 5-10 minutos de sprints en sitio con pesas de 8 kg, 10-15 minutos de sentadillas con pesas de 14 kg, 15-20 minutos de agachadas con pesas de 10 kg; suma tus repeticiones y alcanza la puntuación máxima. ¡La perseverancia te llevará a la victoria!"
+  },
+  "2026-02-24": {
+    "CrossFit": "Realiza 5 series de 20 segundos de sprints en sitio con pesas de 15 kg: ¡Incrementa tu velocidad y agilidad!",
+    "Alimentación": "Añade 3 porciones de pollo a la parrilla al día para aumentar tu ingesta de proteínas y nutrientes: ¡El pollo es una excelente fuente de proteínas!",
+    "Bienestar": "Pasa 10 minutos en un ambiente tranquilo y practica la meditación guiada para calmar tu mente y centrarte: ¡La calma es la clave para el éxito!",
+    "WOD": "EMOM en 25 minutos: 0-5 minutos de flexiones de piernas con pesas de 12 kg, 5-10 minutos de natación con braza larga sin equipamiento, 10-15 minutos de agachadas con pesas de 10 kg, 15-20 minutos de saltos de tijera con pesas de 12 kg; suma tus repeticiones y alcanza la puntuación máxima: ¡La perseverancia y la disciplina te llevarán a la victoria!"
   }
 }
