@@ -1,10 +1,4 @@
 {
-  "2026-01-31": {
-    "CrossFit": "Desarrolla tu movilidad con 5 series de 10 repeticiones de flexiones de piernas con una barra de 8 kg: enfócate en la técnica y la alineación.",
-    "Alimentación": "Añade 1 porción de ensalada de quinoa con frutas frescas y nueces a tu desayuno para aumentar tus niveles de fibra dietética y proteínas.",
-    "Bienestar": "Practica la técnica de respiración diafragmática de 5 minutos antes de cada entrenamiento para reducir el estrés y mejorar la concentración.",
-    "WOD": "AMRAP en 25 minutos: 15 repeticiones de saltos de tijera con pesas de 10 kg, 30 segundos de natación, 20 repeticiones de press de hombros; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito y al crecimiento personal!"
-  },
   "2026-02-01": {
     "CrossFit": "Desarrolla tu capacidad aeróbica con 3 series de 30 segundos de saltos en lugar de 20 repeticiones de saltos de tijera con pesas de 10 kg: enfócate en la velocidad y la alineación.",
     "Alimentación": "Añade 2 porciones de lentejas cocidas y espinacas al vapor a tus comidas diarias para aumentar tus niveles de proteínas vegetales y fibra dietética.",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade una porción de garbanzos cocidos a tu ensalada de quinoa para aumentar tu ingesta de proteínas y fibra.",
     "Bienestar": "Pasa 15 minutos en caminata tranquila en un entorno natural para reducir el estrés y mejorar tu estado de ánimo.",
     "WOD": "For Time en 25 minutos: 0-5 minutos de agachadas con pesas de 16 kg, 5-10 minutos de saltos en lugar con pesas de 14 kg, 10-15 minutos de flexiones de piernas con pesas de 16 kg, 15-20 minutos de remo con pesas de 10 kg; alcanza la puntuación máxima y siente la satisfacción."
+  },
+  "2026-03-02": {
+    "CrossFit": "Realiza 10 repeticiones de flexiones de piernas con pesas de 20 kg, enfócate en mantener una técnica correcta y controlar la descarga de fuerza.",
+    "Alimentación": "Añade una porción de frijoles negros cocidos a tu ensalada de verduras para aumentar tu ingesta de proteínas y nutrientes.",
+    "Bienestar": "Pasa 20 minutos en un baño terapéutico con agua caliente para relajarte y reducir el estrés.",
+    "WOD": "AMRAP en 30 minutos: 0-10 minutos de remo con pesas de 14 kg, 10-15 minutos de agachadas con pesas de 16 kg, 15-20 minutos de saltos en lugar con pesas de 12 kg, 20-25 minutos de sentadillas con pesas de 14 kg, 25-30 minutos de flexiones de brazos con pesas de 12 kg; maximiza tus repeticiones."
   }
 }
