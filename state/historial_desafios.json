@@ -1,10 +1,4 @@
 {
-  "2026-02-05": {
-    "CrossFit": "Desarrolla tu fuerza core con 3 series de 30 segundos de planchas con manos estrechas, enfócate en mantener la línea recta y el estómago firme.",
-    "Alimentación": "Añade 1 porción de quinoa al día para aumentar tus niveles de fibra dietética y proteínas saludables.",
-    "Bienestar": "Practica la meditación guiada durante 10 minutos antes de acostarte para calmar tu mente y mejorar tu sueño.",
-    "WOD": "EMOM en 25 minutos: 20 repeticiones de sentadillas con pesas de 14 kg, 15 segundos de saltos en lugar, 30 segundos de natación con flotadores; suma tus repeticiones al final de cada ronda y alcanza la puntuación máxima. ¡La disciplina y la perseverancia te llevarán al éxito y al crecimiento personal!"
-  },
   "2026-02-06": {
     "CrossFit": "Corre 5 intervalos de 400 metros a un ritmo intenso, con 200 metros de caminata ligera entre cada intervalo.",
     "Alimentación": "Bebe al menos 3 litros de agua durante el día y ajusta la hidratación según tus necesidades individuales.",
@@ -178,5 +172,11 @@
     "Alimentación": "Disfruta de un ensalada de lechuga, zanahoria y pepino con una vinagreta casera y un aderezo de aceite de oliva y jugo de limón.",
     "Bienestar": "Pasa 15 minutos practicando la técnica de respiración diafragmática para reducir el estrés y calmar la mente.",
     "WOD": "AMRAP en 25 minutos: 0-5 minutos de natación con intervalos de 20 segundos de descanso, 5-10 minutos de sentadillas con pesas de 14 kg, 10-15 minutos de remo con pesas de 10 kg, 15-20 minutos de abducciones de piernas con pesas de 12 kg, 20-25 minutos de flexiones de brazos en espejo con pesas de 8 kg; alcanza la puntuación máxima y siente la satisfacción de la victoria."
+  },
+  "2026-03-07": {
+    "CrossFit": "Realiza 3 series de 10 repeticiones de flexiones de piernas con pesas de 10 kg, enfócate en la técnica y el control.",
+    "Alimentación": "Prepara un plato de pollo al curry con arroz integral y verduras al vapor para aumentar tus niveles de proteínas.",
+    "Bienestar": "Pasa 15 minutos practicando la técnica de relajación muscular progresiva para reducir el estrés y calmar el cuerpo.",
+    "WOD": "For Time en 30 minutos: 0-10 minutos de correr con intervalos de 30 segundos de descanso, 10-20 minutos de ejercicios de core con pesas de 8 kg, 20-25 minutos de sentadillas con pesas de 12 kg, 25-30 minutos de remo con pesas de 10 kg; alcanza la puntuación máxima y siente la emoción de la victoria!"
   }
 }
