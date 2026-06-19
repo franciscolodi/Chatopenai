@@ -1,10 +1,4 @@
 {
-  "2026-05-20": {
-    "CrossFit": "Realiza 4 series de 30 segundos de saltos en cinta de correr intercalados con 30 segundos de descanso para mejorar la resistencia anaeróbica.",
-    "Alimentación": "Bebe al menos 3 vasos de agua con gaseosa de limón y jugo de naranja para mejorar la hidratación y mantener el equilibrio ácido.",
-    "Bienestar": "Pasa 10 minutos cada tarde dibujando o pintando algo que te guste para mejorar tu autoestima y creatividad.",
-    "WOD": "AMRAP (25 minutos): 5 minutos de bicicleta estática con resistencia alta, 8 minutos de remo con resistencia media, 6 minutos de flexiones de pecho con pesas de 20 kg, 6 minutos de abdominales con pesas de 22 kg. ¡Lleva tu energía al máximo y siente la emoción!"
-  },
   "2026-05-21": {
     "CrossFit": "Realiza 3 series de 8 metros de carrera en cinta de correr con pesas de 15 kg, enfocándote en velocidad y resistencia. ¡Desbloquea tu potencial!",
     "Alimentación": "Come al menos 3 porciones de brócoli al día para mejorar la función de tu sistema inmunológico y reducir el estrés. ¡El brócoli es tu amigo!",
@@ -178,5 +172,11 @@
     "Alimentación": "Añade 1 porción de puré de calabacín a tus comidas diarias para aumentar tu consumo de vegetales.",
     "Bienestar": "Duerme 15 minutos en un lugar tranquilo con los ojos cerrados y la mente en blanco para relajar tu cuerpo y mente.",
     "WOD": "For Time (25 minutos): 4 series de 10 repeticiones de saltos de tijera con pesas de 6 kg, 4 series de 10 abdominales con pesas de 8 kg y 7 minutos de cardio aeróbico en correa de correr. ¡Logra el máximo y siente la victoria!"
+  },
+  "2026-06-19": {
+    "CrossFit": "Realiza 3 series de 30 segundos de estiramientos dinámicos para aumentar tu movilidad en las articulaciones",
+    "Alimentación": "Come 1 porción de lentejas cocidas con cebolla y ajo para aumentar tu consumo de proteínas y fibra",
+    "Bienestar": "Pasa 10 minutos en silencio en un lugar tranquilo y enfócate en tu respiración para aumentar tu conciencia mindfulness",
+    "WOD": "For Time (30 minutos): 5 series de 10 repeticiones de burpees con pesas de 8 kg, 5 series de 10 repeticiones de remo con resistencia alta y 10 minutos de cardio aeróbico en correa de correr. ¡Logra tu máximo y siente la victoria!"
   }
 }
