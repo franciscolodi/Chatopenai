@@ -1,10 +1,4 @@
 {
-  "2026-05-21": {
-    "CrossFit": "Realiza 3 series de 8 metros de carrera en cinta de correr con pesas de 15 kg, enfocándote en velocidad y resistencia. ¡Desbloquea tu potencial!",
-    "Alimentación": "Come al menos 3 porciones de brócoli al día para mejorar la función de tu sistema inmunológico y reducir el estrés. ¡El brócoli es tu amigo!",
-    "Bienestar": "Pasa 15 minutos cada noche leyendo un libro antes de dormir para relajarte y mejorar tu estado de ánimo. ¡Dale un descanso a tu mente!",
-    "WOD": "For Time (25 minutos): 5 minutos de bicicleta estática con resistencia alta, 8 minutos de flexiones de piernas con pesas de 20 kg, 5 minutos de abdominales con pesas de 15 kg, 7 minutos de remo con resistencia media. ¡Lleva tu energía al máximo y siente la victoria!"
-  },
   "2026-05-22": {
     "CrossFit": "Realiza 5 series de estiramientos dinámicos para piernas y glúteos, enfocándote en la movilidad y liberación de tensiones.",
     "Alimentación": "Bebe al menos 5 vasos de agua filtrada al día para mantener la hidratación óptima y evitar la deshidratación.",
@@ -178,5 +172,11 @@
     "Alimentación": "Come 1 porción de lentejas cocidas con cebolla y ajo para aumentar tu consumo de proteínas y fibra",
     "Bienestar": "Pasa 10 minutos en silencio en un lugar tranquilo y enfócate en tu respiración para aumentar tu conciencia mindfulness",
     "WOD": "For Time (30 minutos): 5 series de 10 repeticiones de burpees con pesas de 8 kg, 5 series de 10 repeticiones de remo con resistencia alta y 10 minutos de cardio aeróbico en correa de correr. ¡Logra tu máximo y siente la victoria!"
+  },
+  "2026-06-20": {
+    "CrossFit": "Realiza 4 series de 30 segundos de sentadillas con pesas de 12 kg, descansando 15 segundos entre series para aumentar tu resistencia.",
+    "Alimentación": "Añade 2 litros de agua a tu consumo diario para mantener una buena hidratación y evitar la deshidratación.",
+    "Bienestar": "Pasa 10 minutos meditando en un parque o jardín para aumentar tu conciencia mindfulness y conectar con la naturaleza.",
+    "WOD": "EMOM (25 minutos): 5 series de 10 repeticiones de boxeo con mancuernas de 10 kg, 5 series de 10 abdominales en una pelota, 5 series de 20 segundos de cardio en correa de correr. ¡Logra tu máximo y siente la victoria!"
   }
 }
