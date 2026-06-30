@@ -1,10 +1,4 @@
 {
-  "2026-05-31": {
-    "CrossFit": "Estira tus articulaciones con 30 segundos de estiramientos dinámicos de piernas, hombros y cuello para mejorar tu movilidad.",
-    "Alimentación": "Come 1 taza de avena cocida con frutas frescas y nueces para incorporar fibra y energía en tu desayuno.",
-    "Bienestar": "Practica la meditación de 5 minutos para calmar tu mente y enfocarte en el presente.",
-    "WOD": "For Time (25 minutos): 10 minutos de cardio aeróbico con escaleras, 5 minutos de sentadillas con pesas de 15 kg, 4 minutos de flexiones de piernas con pesas de 12 kg, 4 minutos de abdominales con pesas de 10 kg, 2 minutos de saltos en cinta de correr con pesas de 8 kg. ¡Mantén la intensidad y supera tus límites!"
-  },
   "2026-06-01": {
     "CrossFit": "Realiza 3 series de 10 repeticiones de flexiones de piernas con pesas de 10 kg, enfocándote en llevar la cadera hacia arriba y mantener la espalda recta. ¡Siente la movilidad en tus piernas!",
     "Alimentación": "Come 2 raciones de 100g de pollo a la parrilla con una mezcla de verduras al vapor para aumentar tu ingesta de proteínas. ¡Un plato saludable y delicioso!",
@@ -178,5 +172,11 @@
     "Alimentación": "Come una porción de sopa de lentejas con verduras y tomate, y agrega un vaso de cebada cocida como fuente de fibra y proteínas.",
     "Bienestar": "Pasa 10 minutos en silencio, respirando profundamente y concentrándote en el presente, y luego anota 3 cosas que te hacen sentir agradecido.",
     "WOD": "For Time (30 minutos): realizar 3 series de 20 repeticiones de box jumps con una caja de 60 cm, 2 series de 15 repeticiones de press de banca con pesas de 10 kg y 1 serie de 10 repeticiones de plié con pesas de 15 kg. ¡Aumenta tu velocidad y fuerza!"
+  },
+  "2026-06-30": {
+    "CrossFit": "Realiza 3 series de 12 repeticiones de saltos de agilidad con mancuernas de 6 kg, enfócate en la velocidad y la coordinación.",
+    "Alimentación": "Come una porción de pollo al horno con verduras asadas y un vaso de leche entera para aumentar tu consumo de proteínas.",
+    "Bienestar": "Pasa 15 minutos en un jardín local haciendo una lista de las plantas y animales que ves y observando la naturaleza en acción.",
+    "WOD": "EMOM (30 minutos): 4 series de 30 segundos de sprint en bicicleta estática, 3 series de 20 repeticiones de press de banca con pesas de 8 kg y 2 series de 30 segundos de estiramientos dinámicos, ¡aumenta tu resistencia y fuerza!"
   }
 }
