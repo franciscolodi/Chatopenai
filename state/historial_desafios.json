@@ -1,10 +1,4 @@
 {
-  "2026-07-02": {
-    "CrossFit": "Realiza 5 series de 15 repeticiones de deadlift con pesas de 12 kg, enfócate en la técnica y la fuerza.",
-    "Alimentación": "Come una porción de lentejas cocidas con verduras y agrega un vaso de cebada cocida para aumentar tu consumo de fibra y proteínas.",
-    "Bienestar": "Pasa 15 minutos caminando al aire libre y observando la naturaleza en tu comunidad local.",
-    "WOD": "For Time (30 minutos): realiza 3 series de 25 repeticiones de burpees con saltos, 2 series de 20 repeticiones de press de banca con pesas de 10 kg y 1 serie de 15 repeticiones de remo con una barra de 16 kg. ¡Aumenta tu resistencia y fuerza!"
-  },
   "2026-07-03": {
     "CrossFit": "Realiza 3 series de 30 segundos de saltos de agilidad en una zona de obstáculos con cuerda de 3 mm, enfócate en la velocidad y la coordinación.",
     "Alimentación": "Come una ensalada de espinacas con aguacate, tomate y pepino, añade una cucharada de aceite de oliva y una cucharadita de vinagreta de limón.",
@@ -178,5 +172,11 @@
     "Alimentación": "Incorpore un plato de lentejas cocidas con verduras y un toque de limón para equilibrar tus grasas y carbohidratos",
     "Bienestar": "Cada mañana, dedica 2 minutos a escribir 3 cosas que estás agradecido por en un cuaderno de gratitud",
     "WOD": "AMRAP (25 minutos): 4 series de 15 repeticiones de agachadas, 3 series de 20 metros de carrera en cinta de correr, 2 series de 10 repeticiones de remo con mancuernas de 20 kg. ¡No te rindas!"
+  },
+  "2026-08-01": {
+    "CrossFit": "Desarrolla tu fuerza en los brazos con 3 series de 12 repeticiones de flexiones de peso muerto con mancuernas de 15 kg",
+    "Alimentación": "Bebe al menos 2 litros de agua durante el día y evita el consumo de alimentos procesados y azucarados",
+    "Bienestar": "Dedica 10 minutos a tomar un baño relajante con esencia de lavanda para calmar tu mente y cuerpo",
+    "WOD": "AMRAP (30 minutos): 5 series de 15 repeticiones de saltos de tijera, 4 series de 25 metros de carrera en cinta de correr, 3 series de 12 repeticiones de sentadillas con pesas de 22 kg. ¡No te rindas!"
   }
 }
