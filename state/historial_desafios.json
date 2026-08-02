@@ -1,10 +1,4 @@
 {
-  "2026-07-03": {
-    "CrossFit": "Realiza 3 series de 30 segundos de saltos de agilidad en una zona de obstáculos con cuerda de 3 mm, enfócate en la velocidad y la coordinación.",
-    "Alimentación": "Come una ensalada de espinacas con aguacate, tomate y pepino, añade una cucharada de aceite de oliva y una cucharadita de vinagreta de limón.",
-    "Bienestar": "Pasa 30 minutos visitando a alguien que no has visto en tiempo, practica el contacto social y la empatía.",
-    "WOD": "For Time (30 minutos): 4 series de 20 repeticiones de burpees con saltos, 3 series de 30 segundos de sprint en bicicleta estática y 2 series de 15 repeticiones de remo con una barra de 14 kg."
-  },
   "2026-07-04": {
     "CrossFit": "Realiza 5 series de 15 repeticiones de sentadillas con pesas de 10 kg, enfócate en la resistencia y la estabilidad.",
     "Alimentación": "Aumenta tu consumo de agua durante el día, bebe al menos 2 litros de agua a lo largo de 8 horas.",
@@ -178,5 +172,11 @@
     "Alimentación": "Bebe al menos 2 litros de agua durante el día y evita el consumo de alimentos procesados y azucarados",
     "Bienestar": "Dedica 10 minutos a tomar un baño relajante con esencia de lavanda para calmar tu mente y cuerpo",
     "WOD": "AMRAP (30 minutos): 5 series de 15 repeticiones de saltos de tijera, 4 series de 25 metros de carrera en cinta de correr, 3 series de 12 repeticiones de sentadillas con pesas de 22 kg. ¡No te rindas!"
+  },
+  "2026-08-02": {
+    "CrossFit": "Desarrolla tu agilidad con 3 series de 20 segundos de saltos de tijera en el lugar",
+    "Alimentación": "Incorpore 1 porción de espinacas cocidas con limón y ajo en tus ensaladas diarias",
+    "Bienestar": "Dedica 10 minutos a meditar sentado en una posición cómoda y enfócate en tu respiración",
+    "WOD": "EMOM (25 minutos): 5 minutos de cardio (cinta de correr o bicicleta), 5 minutos de series de 20 remo con mancuernas de 12 kg, 5 minutos de series de 15 sentadillas con pesas de 15 kg, 5 minutos de estiramientos dinámicos. ¡Aprovecha cada minuto!"
   }
 }
