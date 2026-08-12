@@ -1,10 +1,4 @@
 {
-  "2026-07-13": {
-    "CrossFit": "Desarrolla tu rango de movimiento con 3 series de 20 repeticiones de extensiones de brazos con pesas de 8 kg",
-    "Alimentación": "Incrementa tu consumo de bebidas hidratantes con un mínimo de 4 litros de agua al día",
-    "Bienestar": "Realiza una meditación de 10 minutos para calmar tu mente y enfocarte en el momento",
-    "WOD": "EMOM (25 minutos): 8 series de 45 segundos de correr en cinta de correr, 6 series de 30 repeticiones de sentadillas con pesas de 10 kg, 4 series de 20 repeticiones de elevaciones de piernas en el tijera con pesas de 9 kg, ¡Desbloquea tu potencial y alcanza la victoria!"
-  },
   "2026-07-14": {
     "CrossFit": "Realiza 5 series de 10 repeticiones de sentadillas con pesas de 16 kg para fortalecer tus piernas.",
     "Alimentación": "Incorpore una porción de zanahorias crudas al desayuno para aumentar tu dosis diaria de vitaminas y minerales.",
@@ -178,5 +172,11 @@
     "Alimentación": "Bebe al menos 2 litros de agua antes de las comidas principales y 1 litro entre medias para mantener tu hidratación óptima.",
     "Bienestar": "Dedica 5 minutos a la técnica de respiración 4-7-8 y relaja tus músculos, enfócate en tu centro.",
     "WOD": "AMRAP (25 minutos): 30 repeticiones de sentadillas con pesas de 12 kg, 20 metros de carrera en zigzag en cinta de correr, 15 repeticiones de saltos en diagonal con un peso de 8 kg en cada mano, repite el ciclo lo máximo posible. ¡Construye tu resistencia física!"
+  },
+  "2026-08-12": {
+    "CrossFit": "Desarrolla tu agilidad con 8 repeticiones de saltos de tijera en línea con el pie izquierdo y 12 segundos de descanso entre series",
+    "Alimentación": "Incorpore al menos 250g de garbanzos cocidos al día para aumentar tus niveles de proteínas y fibra",
+    "Bienestar": "Pasa 10 minutos caminando desnudo al aire libre para conectar con la naturaleza y reducir el estrés",
+    "WOD": "EMOM (25 minutos): 30 segundos de carrera en zigzag en cinta de correr, 10 repeticiones de flexiones de piernas, 15 repeticiones de sentadillas con pesas de 8 kg, repite el ciclo sin descanso"
   }
 }
