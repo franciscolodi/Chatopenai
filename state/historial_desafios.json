@@ -1,10 +1,4 @@
 {
-  "2026-07-18": {
-    "CrossFit": "Desarrolla tu agilidad con 3 series de 20 segundos de esquiva lateral con mancuernas de 6 kg y 2 series de 15 repeticiones de saltos de burro.",
-    "Alimentación": "Incorpore 150g de proteína de pollo cocida en tu ensalada de espinacas frescas con aguacate y fresas.",
-    "Bienestar": "Pasa 30 minutos al aire libre para conectarte con la naturaleza y sentir la energía del entorno.",
-    "WOD": "AMRAP (30 minutos): 15 series de 30 segundos de saltos de burro, 10 series de 20 repeticiones de press de piernas con pesas de 10 kg, 8 series de 15 repeticiones de flexiones en el tijera con pesas de 8 kg. ¡Desbloquea tu energía y alcanza la victoria!"
-  },
   "2026-07-19": {
     "CrossFit": "Realiza 3 series de 30 segundos de sentadillas dinámicas con piernas inclinadas para mejorar tu movilidad articular.",
     "Alimentación": "Incorpore una porción de lentejas cocidas en tu ensalada de quinoa y vegetales para aumentar tu ingesta de proteínas vegetales.",
@@ -178,5 +172,8 @@
     "Alimentación": "Incorpore 100g de camarones cocidos al día para aumentar tus niveles de proteínas y mejorar tu salud ósea. ¡Haz que tus músculos crezcan y se fortalezcan!",
     "Bienestar": "Pasa 30 minutos caminando al aire libre en un parque cercano, observando la vegetación y escuchando los sonidos de la naturaleza. ¡Conéctate con la tierra y reduce tu estrés!",
     "WOD": "AMRAP (30 minutos): 50 repeticiones de flexiones de piernas, 40 segundos de natación en piscina, 30 metros de carrera en cinta de correr, repite el ciclo lo máximo posible. ¡Construye tu resistencia y alcanza tu máximo potencial!"
+  },
+  "2026-08-17": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
