@@ -1,10 +1,4 @@
 {
-  "2026-07-19": {
-    "CrossFit": "Realiza 3 series de 30 segundos de sentadillas dinámicas con piernas inclinadas para mejorar tu movilidad articular.",
-    "Alimentación": "Incorpore una porción de lentejas cocidas en tu ensalada de quinoa y vegetales para aumentar tu ingesta de proteínas vegetales.",
-    "Bienestar": "Escribe 5 cosas que estás agradecido por en un diario de gratitud para cultivar la positividad y la paz mental.",
-    "WOD": "AMRAP (25 minutos): 12 series de 40 metros de carrera en cinta de correr, 8 series de 20 repeticiones de elevaciones de piernas en el tijera con pesas de 12 kg, 5 series de 15 repeticiones de flexiones en el suelo con mancuernas de 8 kg. ¡Desbloquea tu energía y alcanza la victoria!"
-  },
   "2026-07-20": {
     "CrossFit": "Realiza 3 series de 30 segundos de estiramientos dinámicos para mejorar tu movilidad en las caderas.",
     "Alimentación": "Bebe al menos 2 litros de agua durante el día y evita el café y el té a partir de las 3 pm.",
@@ -174,6 +168,9 @@
     "WOD": "AMRAP (30 minutos): 50 repeticiones de flexiones de piernas, 40 segundos de natación en piscina, 30 metros de carrera en cinta de correr, repite el ciclo lo máximo posible. ¡Construye tu resistencia y alcanza tu máximo potencial!"
   },
   "2026-08-17": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-18": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
