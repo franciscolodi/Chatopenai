@@ -1,10 +1,4 @@
 {
-  "2026-07-21": {
-    "CrossFit": "Desarrolla tu fuerza con 3 series de 8 repeticiones de sentadillas con pesas de 15 kg y 2 series de 10 repeticiones de press de piernas con pesas de 12 kg.",
-    "Alimentación": "Incorpore una porción de garbanzos cocidos en tu tortilla de verduras y queso feta para aumentar tu ingesta de proteínas vegetales.",
-    "Bienestar": "Invita a un amigo a tomar un café con ti y mantén una conversación profunda para conectarte con la comunidad y reforzar tus relaciones.",
-    "WOD": "For Time (30 minutos): 10 series de 20 metros de carrera en cinta de correr, 8 series de 15 repeticiones de elevaciones de piernas en el tijera con pesas de 10 kg, 5 series de 10 repeticiones de flexiones en el suelo con mancuernas de 10 kg. ¡Desbloquea tu energía y alcanza el éxito!"
-  },
   "2026-07-22": {
     "CrossFit": "Realiza 3 series de 30 segundos de saltos de tijera con mancuernas de 6 kg para mejorar tu agilidad y velocidad.",
     "Alimentación": "Incorpore una porción de garbanzos cocidos en tu sopa de verduras y queso rallado para aumentar tu ingesta de proteínas vegetales.",
@@ -168,6 +162,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-19": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-20": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
