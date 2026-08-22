@@ -1,10 +1,4 @@
 {
-  "2026-07-23": {
-    "CrossFit": "Realiza 5 minutos de carrera en cinta de correr con intensidad moderada, luego 3 series de 20 segundos de saltos de tijera en cinta de correr con mancuernas de 4 kg. ¡Desbloquea tu velocidad y agilidad!",
-    "Alimentación": "Incorpore una porción de pollo a la parrilla en tu ensalada de lechuga, tomate y aguacate para aumentar tu ingesta de proteínas magras.",
-    "Bienestar": "Escribe 5 cosas que estás agradecido por en un cuaderno durante 5 minutos antes de dormir. ¡Cultiva la gratitud y el bienestar!",
-    "WOD": "EMOM (25 minutos): 5 minutos de abdominales de elevación de piernas con pesas de 6 kg, 7 minutos de sentadillas con pesas de 8 kg, 5 minutos de flexiones en el suelo con mancuernas de 6 kg, 8 minutos de ejercicios de fuerza con pesas de 10 kg. ¡Desafía tu potencial y alcanza el éxito!"
-  },
   "2026-07-24": {
     "CrossFit": "Realiza 5 minutos de ejercicios de enlace de piernas con pesas de 8 kg para mejorar tu agilidad y coordinación.",
     "Alimentación": "Incorpore una porción de frutas frescas en tu yogur natural para equilibrar tus macronutrientes y mantenerte hidratado.",
@@ -162,6 +156,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-21": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-22": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
