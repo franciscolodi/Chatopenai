@@ -1,10 +1,4 @@
 {
-  "2026-07-24": {
-    "CrossFit": "Realiza 5 minutos de ejercicios de enlace de piernas con pesas de 8 kg para mejorar tu agilidad y coordinación.",
-    "Alimentación": "Incorpore una porción de frutas frescas en tu yogur natural para equilibrar tus macronutrientes y mantenerte hidratado.",
-    "Bienestar": "Spende un mínimo de 10 minutos caminando por un bosque cercano y recoge un poco de hojas secas para decorar tu hogar.",
-    "WOD": "For Time (30 minutos): 10 series de 20 metros de carrera en cinta de correr, 8 series de 15 repeticiones de elevaciones de piernas en el tijera sin pesas, 5 series de 10 repeticiones de flexiones en el suelo con mancuernas de 8 kg. ¡Desbloquea tu energía y alcanza el éxito!"
-  },
   "2026-07-25": {
     "CrossFit": "Realiza 5 series de 3 minutos de sentadillas con pesas de 10 kg para mejorar tu resistencia muscular!",
     "Alimentación": "Incorpore 1/2 taza de avena cocida en tu frutas frescas para aumentar tu ingesta de fibra.",
@@ -159,6 +153,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-22": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-23": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
