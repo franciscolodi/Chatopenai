@@ -1,10 +1,4 @@
 {
-  "2026-07-25": {
-    "CrossFit": "Realiza 5 series de 3 minutos de sentadillas con pesas de 10 kg para mejorar tu resistencia muscular!",
-    "Alimentación": "Incorpore 1/2 taza de avena cocida en tu frutas frescas para aumentar tu ingesta de fibra.",
-    "Bienestar": "Spende un mínimo de 15 minutos de meditación guiada para calmar tu mente y reducir el estrés.",
-    "WOD": "EMOM (25 minutos): 5 minutos de natación en cinta de correr, 10 minutos de ejercicios de fuerza con pesas de 12 kg, 10 minutos de ejercicios de core en el sofá sin pesas. ¡Acelera tu ritmo y alcanza el éxito!"
-  },
   "2026-07-26": {
     "CrossFit": "Realiza 5 series de 3 minutos de ejercicios de core en el sofá con pesas de 8 kg para mejorar tu estabilidad y fuerza core.",
     "Alimentación": "Incorpore 1 porción de garbanzos cocidos en tu ensalada de lechuga para aumentar tu ingesta de fibra",
@@ -156,6 +150,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-23": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-24": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
