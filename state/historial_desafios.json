@@ -1,10 +1,4 @@
 {
-  "2026-07-26": {
-    "CrossFit": "Realiza 5 series de 3 minutos de ejercicios de core en el sofá con pesas de 8 kg para mejorar tu estabilidad y fuerza core.",
-    "Alimentación": "Incorpore 1 porción de garbanzos cocidos en tu ensalada de lechuga para aumentar tu ingesta de fibra",
-    "Bienestar": "Dedicá 15 minutos a leer un libro antes de dormir para relajarte y estimular tu mente",
-    "WOD": "AMRAP (30 minutos): 2 series de 10 repeticiones de sentadillas con pesas de 10 kg, 5 series de 15 repeticiones de flexiones en el suelo con mancuernas de 10 kg, 3 series de 20 metros de carrera en cinta de correr ¡Desafía tus limites y alcanza el éxito!"
-  },
   "2026-07-27": {
     "CrossFit": "Realiza 3 minutos de saltos de tijera en superficie dura para mejorar tu capacidad aeróbica y explosividad.",
     "Alimentación": "Incorpore 1 taza de avena cocida al día para aumentar tu ingesta de fibra y sentirte más satisfecho.",
@@ -153,6 +147,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-24": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-25": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
