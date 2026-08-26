@@ -1,10 +1,4 @@
 {
-  "2026-07-27": {
-    "CrossFit": "Realiza 3 minutos de saltos de tijera en superficie dura para mejorar tu capacidad aeróbica y explosividad.",
-    "Alimentación": "Incorpore 1 taza de avena cocida al día para aumentar tu ingesta de fibra y sentirte más satisfecho.",
-    "Bienestar": "Dedicá 20 minutos a un baño relajante con agua tibia y sales para calmar tus músculos y mente.",
-    "WOD": "AMRAP (30 minutos): 3 series de 15 repeticiones de remo con mancuernas de 12 kg, 4 series de 20 metros de carrera en cinta de correr, 2 series de 10 repeticiones de flexiones en el suelo con pesas de 8 kg. ¡Desafía tu potencial y alcanza el éxito!"
-  },
   "2026-07-28": {
     "CrossFit": "Desarrolla tu estabilidad core con 5 series de 30 segundos de plié con pesas de 12 kg, con 30 segundos de descanso entre series.",
     "Alimentación": "Incorpore al menos 8 vasos de agua durante el día para mantener tu hidratación óptima.",
@@ -150,6 +144,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-25": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-26": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
