@@ -1,10 +1,4 @@
 {
-  "2026-07-28": {
-    "CrossFit": "Desarrolla tu estabilidad core con 5 series de 30 segundos de plié con pesas de 12 kg, con 30 segundos de descanso entre series.",
-    "Alimentación": "Incorpore al menos 8 vasos de agua durante el día para mantener tu hidratación óptima.",
-    "Bienestar": "Cada hora, toma 1 minuto para reflexionar sobre las cosas que agradeces en tu vida.",
-    "WOD": "For Time (30 minutos): 5 series de 10 repeticiones de saltos de tijera, 5 series de 10 repeticiones de sentadillas con pesas de 14 kg, 5 series de 20 metros de carrera en cinta de correr. ¡No te detengas hasta completar el objetivo!"
-  },
   "2026-07-29": {
     "CrossFit": "Realiza 5 series de 30 segundos de estiramientos dinámicos para mejorar tu movilidad y flexibilidad.",
     "Alimentación": "Balancea tus grasas mediante 1 porción de aguacate en tu ensalada de quinoa y vegetales para una nutrición óptima.",
@@ -147,6 +141,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-26": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-27": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
