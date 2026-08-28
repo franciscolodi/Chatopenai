@@ -1,10 +1,4 @@
 {
-  "2026-07-29": {
-    "CrossFit": "Realiza 5 series de 30 segundos de estiramientos dinámicos para mejorar tu movilidad y flexibilidad.",
-    "Alimentación": "Balancea tus grasas mediante 1 porción de aguacate en tu ensalada de quinoa y vegetales para una nutrición óptima.",
-    "Bienestar": "Disfruta 15 minutos de caminata en un entorno natural como un parque o un bosque para conectarte con la naturaleza.",
-    "WOD": "For Time (40 minutos): 3 series de 20 repeticiones de burpees, 4 series de 30 segundos de saltos de tijera, 2 series de 10 repeticiones de sentadillas con pesas de 16 kg. ¡No te rindas!"
-  },
   "2026-07-30": {
     "CrossFit": "Realiza 10 minutos de caminata en cuesta con un peso corporal adicional de 5 kg para mejorar tu resistencia cardiovascular.",
     "Alimentación": "Incorpore 2 porciones de brócoli al día en ensaladas o estofados para aumentar tu ingesta de antioxidantes y nutrientes.",
@@ -144,6 +138,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-27": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-28": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
