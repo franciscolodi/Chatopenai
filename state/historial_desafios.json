@@ -1,10 +1,4 @@
 {
-  "2026-07-31": {
-    "CrossFit": "Desarrolla tu fuerza en los hombros con 3 series de 8 repeticiones de sentadillas con pesas de 20 kg",
-    "Alimentación": "Incorpore un plato de lentejas cocidas con verduras y un toque de limón para equilibrar tus grasas y carbohidratos",
-    "Bienestar": "Cada mañana, dedica 2 minutos a escribir 3 cosas que estás agradecido por en un cuaderno de gratitud",
-    "WOD": "AMRAP (25 minutos): 4 series de 15 repeticiones de agachadas, 3 series de 20 metros de carrera en cinta de correr, 2 series de 10 repeticiones de remo con mancuernas de 20 kg. ¡No te rindas!"
-  },
   "2026-08-01": {
     "CrossFit": "Desarrolla tu fuerza en los brazos con 3 series de 12 repeticiones de flexiones de peso muerto con mancuernas de 15 kg",
     "Alimentación": "Bebe al menos 2 litros de agua durante el día y evita el consumo de alimentos procesados y azucarados",
@@ -138,6 +132,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-29": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-30": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
