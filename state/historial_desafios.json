@@ -1,10 +1,4 @@
 {
-  "2026-08-01": {
-    "CrossFit": "Desarrolla tu fuerza en los brazos con 3 series de 12 repeticiones de flexiones de peso muerto con mancuernas de 15 kg",
-    "Alimentación": "Bebe al menos 2 litros de agua durante el día y evita el consumo de alimentos procesados y azucarados",
-    "Bienestar": "Dedica 10 minutos a tomar un baño relajante con esencia de lavanda para calmar tu mente y cuerpo",
-    "WOD": "AMRAP (30 minutos): 5 series de 15 repeticiones de saltos de tijera, 4 series de 25 metros de carrera en cinta de correr, 3 series de 12 repeticiones de sentadillas con pesas de 22 kg. ¡No te rindas!"
-  },
   "2026-08-02": {
     "CrossFit": "Desarrolla tu agilidad con 3 series de 20 segundos de saltos de tijera en el lugar",
     "Alimentación": "Incorpore 1 porción de espinacas cocidas con limón y ajo en tus ensaladas diarias",
@@ -135,6 +129,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-30": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-08-31": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
