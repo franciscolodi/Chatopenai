@@ -1,10 +1,4 @@
 {
-  "2026-08-02": {
-    "CrossFit": "Desarrolla tu agilidad con 3 series de 20 segundos de saltos de tijera en el lugar",
-    "Alimentación": "Incorpore 1 porción de espinacas cocidas con limón y ajo en tus ensaladas diarias",
-    "Bienestar": "Dedica 10 minutos a meditar sentado en una posición cómoda y enfócate en tu respiración",
-    "WOD": "EMOM (25 minutos): 5 minutos de cardio (cinta de correr o bicicleta), 5 minutos de series de 20 remo con mancuernas de 12 kg, 5 minutos de series de 15 sentadillas con pesas de 15 kg, 5 minutos de estiramientos dinámicos. ¡Aprovecha cada minuto!"
-  },
   "2026-08-03": {
     "CrossFit": "Desarrolla tu velocidad con 3 series de 10 segundos de carrera en cinta de correr en lugar de saltar",
     "Alimentación": "Prepare una ensalada completa con garbanzos, pepinos, tomates y una vinagreta ligera para aprovechar las legumbres",
@@ -132,6 +126,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-08-31": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-01": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
