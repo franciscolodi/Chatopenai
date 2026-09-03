@@ -1,10 +1,4 @@
 {
-  "2026-08-04": {
-    "CrossFit": "Desarrolla tu agilidad con 3 series de 15 segundos de saltos de tijera en línea, cambiando de dirección en cada serie.",
-    "Alimentación": "Incorpore 2 porciones de garbanzos cocidos con cebolla y ajo en tus ensaladas diarias para aumentar la fibra",
-    "Bienestar": "Dedica 20 minutos a leer un libro o revista en un lugar tranquilo y relajante antes de acostarte",
-    "WOD": "For Time (30 minutos): 5 series de 10 repeticiones de sentadillas con pesas de 20 kg, 3 series de 20 metros de remo con mancuernas de 18 kg, 2 series de 15 repeticiones de saltos de tijera en lugar. Aprovecha cada segundo para mejorar tu marca!"
-  },
   "2026-08-05": {
     "CrossFit": "Desarrolla tu agilidad con 3 series de 30 segundos de carrera en zigzag en cinta de correr",
     "Alimentación": "Incorpore 1 porción de pepino crudo en rodajas en tus ensaladas diarias para aumentar la fibra",
@@ -126,6 +120,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-02": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-03": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
