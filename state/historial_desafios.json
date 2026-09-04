@@ -1,10 +1,4 @@
 {
-  "2026-08-05": {
-    "CrossFit": "Desarrolla tu agilidad con 3 series de 30 segundos de carrera en zigzag en cinta de correr",
-    "Alimentación": "Incorpore 1 porción de pepino crudo en rodajas en tus ensaladas diarias para aumentar la fibra",
-    "Bienestar": "Invita a un amigo para un juego de tenis o baloncesto de 30 minutos para mejorar tu coordinación",
-    "WOD": "EMOM (25 minutos): 5 minutos de series de 20 repeticiones de saltos de tijera en línea, 5 minutos de series de 15 repeticiones de sentadillas con pesas de 16 kg, 5 minutos de series de 20 metros de remo con mancuernas de 14 kg, 5 minutos de estiramientos dinámicos. ¡Aprovecha cada minuto!"
-  },
   "2026-08-06": {
     "CrossFit": "Desarrolla tu resistencia con 3 series de 20 segundos de levantamientos de mancuernas en 1 mano con cada lado del cuerpo.",
     "Alimentación": "Bebe al menos 2 litros de agua en 8 horas para mantener tu cuerpo hidratado y enfocado.",
@@ -123,6 +117,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-03": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-04": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
