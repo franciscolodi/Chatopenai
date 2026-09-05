@@ -1,10 +1,4 @@
 {
-  "2026-08-06": {
-    "CrossFit": "Desarrolla tu resistencia con 3 series de 20 segundos de levantamientos de mancuernas en 1 mano con cada lado del cuerpo.",
-    "Alimentación": "Bebe al menos 2 litros de agua en 8 horas para mantener tu cuerpo hidratado y enfocado.",
-    "Bienestar": "Invita a 3 amigos para un pícnic al aire libre y conecta con la naturaleza y con ellos.",
-    "WOD": "EMOM (25 minutos): 5 minutos de series de 15 repeticiones de remo con mancuernas de 16 kg, 5 minutos de series de 10 repeticiones de sentadillas con pesas de 14 kg, 5 minutos de series de 20 metros de burpees con saltos de tijera y 5 minutos de estiramientos dinámicos. ¡Mantén tu ritmo y energía!"
-  },
   "2026-08-07": {
     "CrossFit": "Desarrolla tu fuerza con 3 series de 10 repeticiones de sentadillas con pesas de 24 kg, enfócate en mantener la técnica",
     "Alimentación": "Bebe 2 tazas de agua con limón antes de cada comida para mantener tu hidratación óptima",
@@ -120,6 +114,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-04": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-05": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
