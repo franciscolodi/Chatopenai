@@ -1,10 +1,4 @@
 {
-  "2026-08-07": {
-    "CrossFit": "Desarrolla tu fuerza con 3 series de 10 repeticiones de sentadillas con pesas de 24 kg, enfócate en mantener la técnica",
-    "Alimentación": "Bebe 2 tazas de agua con limón antes de cada comida para mantener tu hidratación óptima",
-    "Bienestar": "Invita a un amigo para compartir un café o té y dedica 10 minutos a hablar sobre tus objetivos y metas",
-    "WOD": "AMRAP (30 minutos): 20 metros de remo con mancuernas de 18 kg, 10 repeticiones de sentadillas con pesas de 20 kg, 15 repeticiones de saltos de tijera en línea, repita el ciclo lo máximo posible. ¡No te rindas!"
-  },
   "2026-08-08": {
     "CrossFit": "Desarrolla tu movilidad con 3 series de 90 segundos de estiramientos dinámicos en la cintura y las caderas, enfócate en la amplitud de movimiento.",
     "Alimentación": "Incorpore 3 porciones de pescado al día, como merluza o salmón, para aumentar tus niveles de proteínas y beneficios para el corazón.",
@@ -117,6 +111,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-05": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-06": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
