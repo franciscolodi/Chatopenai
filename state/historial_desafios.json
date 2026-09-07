@@ -1,10 +1,4 @@
 {
-  "2026-08-08": {
-    "CrossFit": "Desarrolla tu movilidad con 3 series de 90 segundos de estiramientos dinámicos en la cintura y las caderas, enfócate en la amplitud de movimiento.",
-    "Alimentación": "Incorpore 3 porciones de pescado al día, como merluza o salmón, para aumentar tus niveles de proteínas y beneficios para el corazón.",
-    "Bienestar": "Dedica 15 minutos a la meditación de respiración profunda y concéntrate en liberar el estrés y la ansiedad.",
-    "WOD": "For Time (25 minutos): 5 minutos de series de 30 repeticiones de saltos de tijera en línea, 5 minutos de series de 20 segundos de levantamientos de mancuernas en 1 mano con cada lado del cuerpo, 5 minutos de series de 30 segundos de carrera en zigzag en cinta de correr, 5 minutos de estiramientos estáticos. ¡Mantén la intensidad!"
-  },
   "2026-08-09": {
     "CrossFit": "Desarrolla tu agilidad con 5 series de 30 segundos de saltos en diagonal con un peso de 10 kg en cada mano.",
     "Alimentación": "Incorpore al menos 2 porciones de lentejas al día para aumentar tus niveles de proteínas y fibra.",
@@ -114,6 +108,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-06": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-07": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
