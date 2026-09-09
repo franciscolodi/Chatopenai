@@ -1,10 +1,4 @@
 {
-  "2026-08-10": {
-    "CrossFit": "Realiza 3 series de 30 segundos de carrera en cinta de correr en espiral, enfócate en mantener la técnica de carrera y recuperación. ¡Vamos a impulsar tu cardio!",
-    "Alimentación": "Incorpore lentejas al curry de pollo para aumentar tus niveles de proteínas y fibra. ¡Un delicioso platillo para tu salud!",
-    "Bienestar": "Dedica 10 minutos a escribir tus logros y realizaciones, y celebra tus victorias. ¡Reconoce tu fuerza y valor!",
-    "WOD": "AMRAP (30 minutos): 20 metros de remo con mancuernas de 16 kg, 30 repeticiones de saltos en línea con aleta de natación, 20 segundos de levantamientos de mancuernas en 1 mano con cada lado del cuerpo, repite el ciclo lo máximo posible. ¡No te detengas hasta que no te sientas satisfecho!"
-  },
   "2026-08-11": {
     "CrossFit": "Desarrolla tu resistencia con 4 series de 45 segundos de carrera en cinta de correr en espiral a una velocidad intensa.",
     "Alimentación": "Bebe al menos 2 litros de agua antes de las comidas principales y 1 litro entre medias para mantener tu hidratación óptima.",
@@ -108,6 +102,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-08": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-09": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
