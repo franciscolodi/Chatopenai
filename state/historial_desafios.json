@@ -1,10 +1,4 @@
 {
-  "2026-08-11": {
-    "CrossFit": "Desarrolla tu resistencia con 4 series de 45 segundos de carrera en cinta de correr en espiral a una velocidad intensa.",
-    "Alimentación": "Bebe al menos 2 litros de agua antes de las comidas principales y 1 litro entre medias para mantener tu hidratación óptima.",
-    "Bienestar": "Dedica 5 minutos a la técnica de respiración 4-7-8 y relaja tus músculos, enfócate en tu centro.",
-    "WOD": "AMRAP (25 minutos): 30 repeticiones de sentadillas con pesas de 12 kg, 20 metros de carrera en zigzag en cinta de correr, 15 repeticiones de saltos en diagonal con un peso de 8 kg en cada mano, repite el ciclo lo máximo posible. ¡Construye tu resistencia física!"
-  },
   "2026-08-12": {
     "CrossFit": "Desarrolla tu agilidad con 8 repeticiones de saltos de tijera en línea con el pie izquierdo y 12 segundos de descanso entre series",
     "Alimentación": "Incorpore al menos 250g de garbanzos cocidos al día para aumentar tus niveles de proteínas y fibra",
@@ -105,6 +99,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-09": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-10": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
