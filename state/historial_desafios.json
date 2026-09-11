@@ -1,10 +1,4 @@
 {
-  "2026-08-12": {
-    "CrossFit": "Desarrolla tu agilidad con 8 repeticiones de saltos de tijera en línea con el pie izquierdo y 12 segundos de descanso entre series",
-    "Alimentación": "Incorpore al menos 250g de garbanzos cocidos al día para aumentar tus niveles de proteínas y fibra",
-    "Bienestar": "Pasa 10 minutos caminando desnudo al aire libre para conectar con la naturaleza y reducir el estrés",
-    "WOD": "EMOM (25 minutos): 30 segundos de carrera en zigzag en cinta de correr, 10 repeticiones de flexiones de piernas, 15 repeticiones de sentadillas con pesas de 8 kg, repite el ciclo sin descanso"
-  },
   "2026-08-13": {
     "CrossFit": "Desarrolla tu resistencia con 5 series de 20 repeticiones de sentadillas con pesas de 10 kg y 20 segundos de recuperación entre series.",
     "Alimentación": "Incorpore 3 porciones de huevos de gallina al día para aumentar tus niveles de proteínas y mejorar tu salud ósea.",
@@ -102,6 +96,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-10": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-11": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
