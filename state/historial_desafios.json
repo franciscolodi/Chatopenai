@@ -1,10 +1,4 @@
 {
-  "2026-08-13": {
-    "CrossFit": "Desarrolla tu resistencia con 5 series de 20 repeticiones de sentadillas con pesas de 10 kg y 20 segundos de recuperación entre series.",
-    "Alimentación": "Incorpore 3 porciones de huevos de gallina al día para aumentar tus niveles de proteínas y mejorar tu salud ósea.",
-    "Bienestar": "Pasa 20 minutos caminando al aire libre en un bosque cercano para conectar con la naturaleza y reducir el estrés.",
-    "WOD": "AMRAP (30 minutos): 40 metros de natación en piscina, 30 repeticiones de remo con mancuernas de 12 kg, 20 segundos de saltos en línea con aleta de natación, repite el ciclo lo máximo posible. ¡Construye tu resistencia y alcanza tu máximo potencial!"
-  },
   "2026-08-14": {
     "CrossFit": "Realiza 3 series de 60 segundos de saltos en línea con aleta de natación, enfócate en mantener un ritmo constante y sin descansos entre series.",
     "Alimentación": "Incorpore 150g de lentejas cocidas al día para aumentar tus niveles de proteínas y fibra, y mejorar tu salud digestiva.",
@@ -99,6 +93,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-11": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-12": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
