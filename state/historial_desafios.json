@@ -1,10 +1,4 @@
 {
-  "2026-08-15": {
-    "CrossFit": "Realiza 10 series de 30 segundos de sentadillas con pesas de 12 kg, enfócate en mantener una técnica correcta y sin descansos entre series.",
-    "Alimentación": "Bebe al menos 500ml de agua mineral fresca antes y después de cada entrenamiento para mantener una hidratación óptima.",
-    "Bienestar": "Toma 5 minutos al día para escribir en un cuaderno de gratitud, anota 3 cosas que agradeces en tu vida.",
-    "WOD": "AMRAP (25 minutos): 50 metros de carrera en cinta de correr, 15 repeticiones de flexiones de piernas, 10 segundos de saltos en línea con aleta de natación, repite el ciclo lo máximo posible. ¡Construye tu resistencia y alcanza tu máximo potencial!"
-  },
   "2026-08-16": {
     "CrossFit": "Realiza 8 series de 30 segundos de remo con mancuernas de 15 kg, enfócate en mantener un ritmo constante y sin descansos entre series. ¡Desarrolla tu resistencia!",
     "Alimentación": "Incorpore 100g de camarones cocidos al día para aumentar tus niveles de proteínas y mejorar tu salud ósea. ¡Haz que tus músculos crezcan y se fortalezcan!",
@@ -93,6 +87,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-13": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-14": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
