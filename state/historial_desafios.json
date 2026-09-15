@@ -1,10 +1,4 @@
 {
-  "2026-08-16": {
-    "CrossFit": "Realiza 8 series de 30 segundos de remo con mancuernas de 15 kg, enfócate en mantener un ritmo constante y sin descansos entre series. ¡Desarrolla tu resistencia!",
-    "Alimentación": "Incorpore 100g de camarones cocidos al día para aumentar tus niveles de proteínas y mejorar tu salud ósea. ¡Haz que tus músculos crezcan y se fortalezcan!",
-    "Bienestar": "Pasa 30 minutos caminando al aire libre en un parque cercano, observando la vegetación y escuchando los sonidos de la naturaleza. ¡Conéctate con la tierra y reduce tu estrés!",
-    "WOD": "AMRAP (30 minutos): 50 repeticiones de flexiones de piernas, 40 segundos de natación en piscina, 30 metros de carrera en cinta de correr, repite el ciclo lo máximo posible. ¡Construye tu resistencia y alcanza tu máximo potencial!"
-  },
   "2026-08-17": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
@@ -90,6 +84,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-14": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-15": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
