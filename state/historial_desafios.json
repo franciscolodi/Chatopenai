@@ -1,7 +1,4 @@
 {
-  "2026-08-17": {
-    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
-  },
   "2026-08-18": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
@@ -87,6 +84,9 @@
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   },
   "2026-09-15": {
+    "Error": "No se pudieron generar desafíos válidos tras varios intentos."
+  },
+  "2026-09-16": {
     "Error": "No se pudieron generar desafíos válidos tras varios intentos."
   }
 }
